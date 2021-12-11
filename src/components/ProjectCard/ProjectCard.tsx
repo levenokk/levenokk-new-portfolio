@@ -31,6 +31,7 @@ export const ProjectCard = () => {
               </Box>
             </Box>
             <Image
+              alt={''}
               className={classes.image}
               src={tempImage}
               layout={'fill'}

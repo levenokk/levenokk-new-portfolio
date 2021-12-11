@@ -40,7 +40,7 @@ export const AboutSection = () => {
           </Typography>
           <Box className={classes.contentWrapper}>
             <Box className={classes.imageWrapper}>
-              <Image src={meImage} layout={'responsive'} />
+              <Image alt={''} src={meImage} layout={'responsive'} />
             </Box>
             <Box className={classes.content}>
               <Typography variant={'h3'} mb={'16px'}>

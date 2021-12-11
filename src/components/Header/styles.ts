@@ -1,8 +1,8 @@
 import { makeStyles } from '@mui/styles';
 
-import { Theme } from '../../theme/theme';
+import { theme } from '../../theme/theme';
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useStyles = makeStyles({
   wrapper: {
     position: 'absolute',
     width: '100%',
@@ -81,4 +81,4 @@ export const useStyles = makeStyles((theme: Theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-}));
+});

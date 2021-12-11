@@ -27,6 +27,7 @@ export const Header = () => {
         <Box className={classes.wrapperInner}>
           <Box width={isMobile ? 180 : 230}>
             <Image
+              alt={'logo'}
               layout={'responsive'}
               src={require('../../../public/images/logo.svg')}
             />

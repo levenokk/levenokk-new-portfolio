@@ -23,6 +23,7 @@ export const Footer = () => {
           <Box className={classes.topWrapperInner}>
             <Box width={isMobile ? 180 : 230}>
               <Image
+                alt={'logo'}
                 layout={'responsive'}
                 src={require('../../../public/images/logoFooter.svg')}
               />

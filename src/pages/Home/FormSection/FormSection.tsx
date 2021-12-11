@@ -22,7 +22,7 @@ export const FormSection = () => {
       <Layout>
         <section className={classes.wrapper}>
           <Box className={classes.imageWrapper}>
-            <Image src={formImage} layout={'responsive'} />
+            <Image alt={''} src={formImage} layout={'responsive'} />
           </Box>
           <Box className={classes.content}>
             <Typography variant={'h2'}>

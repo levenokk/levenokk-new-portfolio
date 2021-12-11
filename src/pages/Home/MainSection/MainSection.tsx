@@ -62,7 +62,7 @@ export const MainSection = () => {
             </Box>
           </Box>
           <Box className={classes.rightWrapper}>
-            <Image src={mainImage} layout={'responsive'} />
+            <Image alt={''} src={mainImage} layout={'responsive'} />
           </Box>
         </main>
       </Layout>
