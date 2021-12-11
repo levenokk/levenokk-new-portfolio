@@ -1,17 +1,18 @@
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Button } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 import { useStyles } from './styles';
 
 export const UpButton = () => {
-  const [showButton, setShowButton] = useState();
+  const [showButton, setShowButton] = useState(false);
 
   const classes = useStyles({ showButton });
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= document.body.scrollHeight) {
+      if (window.scrollY >= window.innerHeight) {
         setShowButton(true);
       } else {
         setShowButton(false);
@@ -23,9 +24,17 @@ export const UpButton = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [setShowButton]);
 
+  const handleClick = () => {
+    scroll.scrollToTop();
+  };
+
   return (
-    <Button variant={'contained'} className={classes.button}>
-      <KeyboardArrowUpIcon fontSize={'large'} />
+    <Button
+      onClick={handleClick}
+      variant={'contained'}
+      className={classes.button}
+    >
+      <KeyboardArrowUpIcon fontSize={'medium'} />
     </Button>
   );
 };

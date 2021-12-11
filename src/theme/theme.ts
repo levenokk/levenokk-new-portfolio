@@ -1,4 +1,5 @@
-import { createTheme } from '@mui/material';
+import { createTheme, useMediaQuery } from '@mui/material';
+import { useMemo } from 'react';
 
 import { breakpoints } from './breakpoints';
 import { button } from './components/button';
@@ -13,3 +14,23 @@ export const theme = createTheme({
   },
   breakpoints,
 });
+
+export type Theme = typeof theme;
+
+// export const useTheme = () => {
+//   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+//
+//   return useMemo(() => {
+//     return createTheme({
+//       palette: {
+//         ...palette,
+//         mode: prefersDarkMode ? 'dark' : 'light',
+//       },
+//       typography,
+//       components: {
+//         ...button,
+//       },
+//       breakpoints,
+//     });
+//   }, [prefersDarkMode]);
+// };

@@ -1,8 +1,8 @@
 import { makeStyles } from '@mui/styles';
 
-import { theme } from '../../theme/theme';
+import { Theme } from '../../theme/theme';
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme: Theme) => ({
   wrapper: {
     position: 'absolute',
     width: '100%',
@@ -28,6 +28,7 @@ export const useStyles = makeStyles({
     letterSpacing: '0.04em',
     textDecoration: 'none',
     fontFamily: 'Roboto, sans-serif',
+    cursor: 'pointer',
     '&:hover': {
       color: theme.palette.primary.main,
     },
@@ -80,4 +81,4 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+}));
