@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 import { theme } from '../../theme/theme';
+import { Layout } from '../Layout/Layout';
 import { HeaderMobileMenu } from './HeaderMobileMenu';
 import { useStyles } from './styles';
 
@@ -21,45 +22,49 @@ export const Header = () => {
 
   return (
     <Box className={classes.wrapper}>
-      <Box width={isMobile ? 180 : 230}>
-        <Image
-          layout={'responsive'}
-          src={require('../../../public/images/logo.svg')}
-        />
-      </Box>
+      <Layout>
+        <Box className={classes.wrapperInner}>
+          <Box width={isMobile ? 180 : 230}>
+            <Image
+              layout={'responsive'}
+              src={require('../../../public/images/logo.svg')}
+            />
+          </Box>
 
-      <nav className={classes.nav}>
-        <ul className={classes.list}>
-          <li className={classes.listItem}>
-            <a className={classes.link} href='#'>
-              Обо мне
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a className={classes.link} href='#'>
-              Портфолио
-            </a>
-          </li>
-          <li className={classes.listItem}>
-            <a className={classes.link} href='#'>
-              Контакты
-            </a>
-          </li>
-        </ul>
-      </nav>
+          <nav className={classes.nav}>
+            <ul className={classes.list}>
+              <li className={classes.listItem}>
+                <a className={classes.link} href='#'>
+                  Обо мне
+                </a>
+              </li>
+              <li className={classes.listItem}>
+                <a className={classes.link} href='#'>
+                  Портфолио
+                </a>
+              </li>
+              <li className={classes.listItem}>
+                <a className={classes.link} href='#'>
+                  Контакты
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-      <Button
-        className={classes.button}
-        variant={'outlined'}
-        startIcon={<MarkEmailUnreadIcon />}
-      >
-        Связаться со мной
-      </Button>
-      {isMobile && (
-        <IconButton onClick={handleMenuOpen}>
-          <ListIcon fontSize={'large'} />
-        </IconButton>
-      )}
+          <Button
+            className={classes.button}
+            variant={'outlined'}
+            startIcon={<MarkEmailUnreadIcon />}
+          >
+            Связаться со мной
+          </Button>
+          {isMobile && (
+            <IconButton onClick={handleMenuOpen}>
+              <ListIcon fontSize={'large'} />
+            </IconButton>
+          )}
+        </Box>
+      </Layout>
       {isOpen && <HeaderMobileMenu onHandleMenuOpen={handleMenuOpen} />}
     </Box>
   );

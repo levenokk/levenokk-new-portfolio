@@ -4,15 +4,17 @@ import { theme } from '../../theme/theme';
 
 export const useStyles = makeStyles({
   wrapper: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     position: 'absolute',
     width: '100%',
     top: 40,
     left: 0,
-    padding: '0 15px',
     marginBottom: 70,
+    zIndex: 100,
+  },
+  wrapperInner: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   nav: {
     [theme.breakpoints.down('laptop')]: {
