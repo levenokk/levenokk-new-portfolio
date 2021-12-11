@@ -55,6 +55,15 @@ export const typography: TypographyOptions = {
     fontSize: 25,
     lineHeight: 1.3,
     textAlign: 'center',
+    '@media (max-width:992px)': {
+      fontSize: 22,
+    },
+    '@media (max-width:460px)': {
+      fontSize: 20,
+    },
+    '@media (max-width:360px)': {
+      fontSize: 18,
+    },
   },
   body1: {
     fontSize: 16,

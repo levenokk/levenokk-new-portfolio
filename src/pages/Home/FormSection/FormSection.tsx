@@ -1,15 +1,18 @@
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import { Formik } from 'formik';
 import Image from 'next/image';
 import React from 'react';
 
 import formImage from '../../../../public/images/form.svg';
 import { Layout, TextField } from '../../../components';
+import { theme } from '../../../theme/theme';
 import { useStyles } from './styles';
 
 export const FormSection = () => {
   const classes = useStyles();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   const handleFormSubmit = () => {};
 
@@ -46,7 +49,7 @@ export const FormSection = () => {
                   name={'message'}
                   label={'Ваше сообщение'}
                 />
-                <Box maxWidth={'240px'} mt={'34px'}>
+                <Box maxWidth={isMobile ? '100%' : '240px'} mt={'34px'}>
                   <Button
                     startIcon={<MarkEmailUnreadIcon />}
                     fullWidth

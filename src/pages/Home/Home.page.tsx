@@ -1,4 +1,4 @@
-import { Footer, Header, Layout } from '../../components';
+import { Footer, Header } from '../../components';
 import { AboutSection } from './AboutSection/AboutSection';
 import { FormSection } from './FormSection/FormSection';
 import { MainSection } from './MainSection/MainSection';
@@ -10,9 +10,9 @@ export default function Home() {
       <Header />
       <MainSection />
       <AboutSection />
-      {/*<PortfolioSection />*/}
-      {/*<FormSection />*/}
-      {/*<Footer />*/}
+      <PortfolioSection />
+      <FormSection />
+      <Footer />
     </>
   );
 }

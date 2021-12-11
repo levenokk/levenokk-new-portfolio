@@ -22,11 +22,13 @@ export const ProjectCard = () => {
         <a>
           <Box position={'relative'} className={classes.imageWrapper}>
             <Box className={classes.description}>
-              <Typography color={'common.white'} variant={'body1'}>
-                Разнообразный и богатый опыт постоянное информационно-
-                пропагандистское обеспечение нашей деятельности требуют от нас
-                анализа существенных финансовых и административных условий
-              </Typography>
+              <Box className={classes.descriptionWrapper}>
+                <Typography color={'common.white'} variant={'body1'}>
+                  Разнообразный и богатый опыт постоянное информационно-
+                  пропагандистское обеспечение нашей деятельности требуют от нас
+                  анализа существенных финансовых и административных условий
+                </Typography>
+              </Box>
             </Box>
             <Image
               className={classes.image}

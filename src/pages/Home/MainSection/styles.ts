@@ -26,6 +26,7 @@ export const useStyles = makeStyles({
     },
     [theme.breakpoints.down('tablet')]: {
       paddingTop: 117,
+      marginBottom: 35,
     },
   },
   buttonsWrapper: {

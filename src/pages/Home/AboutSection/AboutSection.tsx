@@ -1,5 +1,5 @@
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
@@ -10,10 +10,13 @@ import {
   GitHubIcon,
   InstagramIcon,
 } from '../../../components/icons';
+import { theme } from '../../../theme/theme';
 import { useStyles } from './styles';
 
 export const AboutSection = () => {
   const classes = useStyles();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (
     <Layout>
@@ -125,7 +128,11 @@ export const AboutSection = () => {
                 </a>
               </Typography>
             </Box>
-            <Button startIcon={<CloudDownloadIcon />} variant={'contained'}>
+            <Button
+              fullWidth={isMobile}
+              startIcon={<CloudDownloadIcon />}
+              variant={'contained'}
+            >
               Загрузить моё резюме
             </Button>
           </Box>

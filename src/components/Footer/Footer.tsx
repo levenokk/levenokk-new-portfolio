@@ -20,12 +20,7 @@ export const Footer = () => {
     <footer>
       <Box className={classes.topWrapper}>
         <Layout>
-          <Box
-            width={'100%'}
-            display={'flex'}
-            justifyContent={'space-between'}
-            alignItems={'center'}
-          >
+          <Box className={classes.topWrapperInner}>
             <Box width={isMobile ? 180 : 230}>
               <Image
                 layout={'responsive'}
@@ -33,7 +28,7 @@ export const Footer = () => {
               />
             </Box>
             <Box className={classes.socialsWrapper}>
-              <a className={classes.socialLink} href='#' target={'_blank'}>
+              <a href='#' target={'_blank'}>
                 <InstagramIcon />
               </a>
               <a className={classes.socialLink} href='#' target={'_blank'}>
@@ -149,7 +144,11 @@ export const Footer = () => {
         </Layout>
       </Box>
       <Box className={classes.footerBottom}>
-        <Typography variant={'body2'} textAlign={'center'}>
+        <Typography
+          fontSize={isMobile ? 14 : 16}
+          variant={'body2'}
+          textAlign={'center'}
+        >
           Levenokk 2021 © Все права защищены
         </Typography>
       </Box>

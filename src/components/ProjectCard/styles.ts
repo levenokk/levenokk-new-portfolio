@@ -29,13 +29,19 @@ export const useStyles = makeStyles({
     bottom: 0,
     top: 0,
     zIndex: 2,
-    padding: '26px 40px',
     transform: `translateY(${props.isShowDescription ? 0 : -20}%)`,
     opacity: props.isShowDescription ? 1 : 0,
     transition: 'opacity .2s linear, transform .1s linear',
+    overflow: 'auto',
     background:
       'linear-gradient(0deg, rgba(0, 106, 242, 0.8), rgba(0, 106, 242, 0.8))',
   }),
+  descriptionWrapper: {
+    padding: '26px 40px',
+    [theme.breakpoints.down('tablet')]: {
+      padding: '16px 20px',
+    },
+  },
   imageWrapper: {
     height: '270px',
   },

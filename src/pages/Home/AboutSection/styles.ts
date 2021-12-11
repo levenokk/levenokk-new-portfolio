@@ -5,6 +5,9 @@ import { theme } from '../../../theme/theme';
 export const useStyles = makeStyles({
   wrapper: {
     marginBottom: 113,
+    [theme.breakpoints.down('tablet')]: {
+      marginBottom: 113 / 2,
+    },
   },
   contentWrapper: {
     marginTop: 40,
@@ -56,7 +59,7 @@ export const useStyles = makeStyles({
     marginLeft: 23,
   },
   link: {
-    whiteSpace:'nowrap',
+    whiteSpace: 'nowrap',
     textDecoration: 'none',
     color: 'inherit',
     fontSize: 'inherit',
