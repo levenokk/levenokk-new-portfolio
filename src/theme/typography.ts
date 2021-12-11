@@ -9,6 +9,15 @@ export const typography: TypographyOptions = {
     lineHeight: 1.18,
     marginBottom: 23,
     fontFamily: 'Rubik, sans-serif',
+    '@media (max-width:992px)': {
+      fontSize: 42,
+    },
+    '@media (max-width:460px)': {
+      fontSize: 38,
+    },
+    '@media (max-width:360px)': {
+      fontSize: 34,
+    },
   },
   h2: {
     fontFamily: 'Rubik, sans-serif',
@@ -16,12 +25,30 @@ export const typography: TypographyOptions = {
     fontSize: 45,
     lineHeight: 1.17,
     letterSpacing: 0.04,
+    '@media (max-width:992px)': {
+      fontSize: 38,
+    },
+    '@media (max-width:460px)': {
+      fontSize: 32,
+    },
+    '@media (max-width:360px)': {
+      fontSize: 30,
+    },
   },
   h3: {
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 'bold',
     fontSize: 35,
     lineHeight: 41 / 35,
+    '@media (max-width:992px)': {
+      fontSize: 32,
+    },
+    '@media (max-width:460px)': {
+      fontSize: 30,
+    },
+    '@media (max-width:360px)': {
+      fontSize: 28,
+    },
   },
   h5: {
     fontWeight: 'bold',
@@ -39,5 +66,8 @@ export const typography: TypographyOptions = {
     letterSpacing: '0.04em',
     fontWeight: 300,
     fontFamily: 'Rubik, sans-serif',
+    '@media (max-width:460px)': {
+      fontSize: 16,
+    },
   },
 };

@@ -17,6 +17,10 @@ export const button: Components = {
           textTransform: 'initial',
           borderRadius: 10,
           borderWidth: 2,
+          '@media (max-width:460px)': {
+            paddingBottom: '12px',
+            paddingTop: '12px',
+          },
           '&:hover': {
             borderWidth: 2,
           },
@@ -35,6 +39,10 @@ export const button: Components = {
           filter: 'drop-shadow(0px 7px 12px rgba(0, 106, 242, 0.38))',
           textTransform: 'initial',
           borderRadius: 10,
+          '@media (max-width:460px)': {
+            paddingBottom: '12px',
+            paddingTop: '12px',
+          },
         },
       },
       {
@@ -50,6 +58,10 @@ export const button: Components = {
           boxShadow: '0px 7px 19px rgba(0, 0, 0, 0.15)',
           textTransform: 'initial',
           borderRadius: 10,
+          '@media (max-width:460px)': {
+            paddingBottom: '12px',
+            paddingTop: '12px',
+          },
         },
       },
     ],

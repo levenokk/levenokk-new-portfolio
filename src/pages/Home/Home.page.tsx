@@ -10,9 +10,9 @@ export default function Home() {
       <Header />
       <MainSection />
       <AboutSection />
-      <PortfolioSection />
-      <FormSection />
-      <Footer />
+      {/*<PortfolioSection />*/}
+      {/*<FormSection />*/}
+      {/*<Footer />*/}
     </>
   );
 }

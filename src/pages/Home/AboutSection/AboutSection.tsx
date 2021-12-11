@@ -88,8 +88,8 @@ export const AboutSection = () => {
                   levenokk@gmail.com
                 </a>
               </Typography>
-              <Box display={'flex'}>
-                <Typography variant={'body2'}>
+              <Box flexWrap={'wrap'} display={'flex'}>
+                <Typography mr={'23px'} variant={'body2'}>
                   <Typography
                     fontWeight={'bold'}
                     fontFamily={'inherit'}
@@ -100,7 +100,7 @@ export const AboutSection = () => {
                   </Typography>
                 </Typography>
                 <Box className={classes.socialsWrapper}>
-                  <a className={classes.socialLink} href='#' target={'_blank'}>
+                  <a href='#' target={'_blank'}>
                     <InstagramIcon />
                   </a>
                   <a className={classes.socialLink} href='#' target={'_blank'}>

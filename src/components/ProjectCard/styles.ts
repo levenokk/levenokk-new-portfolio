@@ -11,8 +11,8 @@ export const useStyles = makeStyles({
     borderRadius: 10,
   },
   button: (props: Props) => ({
-    width: 60,
-    height: 60,
+    width: 64,
+    height: 64,
     borderRadius: '50%',
     transform: `rotate(${props.isShowDescription ? 270 : 0}deg)`,
   }),

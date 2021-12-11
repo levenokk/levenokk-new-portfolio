@@ -1,15 +1,18 @@
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import WorkIcon from '@mui/icons-material/Work';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
 import mainImage from '../../../../public/images/main.svg';
 import { Layout } from '../../../components';
+import { theme } from '../../../theme/theme';
 import { useStyles } from './styles';
 
 export const MainSection = () => {
   const classes = useStyles();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (
     <Layout>
@@ -32,12 +35,16 @@ export const MainSection = () => {
             настоящим мастерами программирования!
           </Typography>
           <Box className={classes.buttonsWrapper}>
-            <Box flexGrow={1} mr={'10px'}>
+            <Box
+              flexGrow={1}
+              mb={isMobile ? '10px' : 0}
+              mr={isMobile ? 0 : '10px'}
+            >
               <Button fullWidth variant={'contained'} startIcon={<WorkIcon />}>
                 Портфолио
               </Button>
             </Box>
-            <Box flexGrow={1} ml={'10px'}>
+            <Box flexGrow={1} ml={isMobile ? 0 : '10px'}>
               <Button
                 variant={'text'}
                 fullWidth
