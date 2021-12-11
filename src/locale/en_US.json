@@ -1,0 +1,23 @@
+{
+  "editHeader.editMode": "EDIT MODE",
+  "editHeader.viewMode": "VIEW MODE",
+
+  "banner.mainBanner": "Main Banner",
+  "banner.aboutBanner": "About Banner",
+  "banner.done": "Done",
+
+  "editSectionFormWrapper.hideBlock": "Hide Block",
+  "editSectionFormWrapper.showBlock": "Show Block",
+
+  "form.logotype": "Logotype",
+  "form.bgImage": "Background image",
+  "form.mainTitle": "Main Title",
+  "form.title": "Title",
+  "form.subTitle": "Subtitle",
+  "form.address": "Address",
+  "form.phoneNumber": "Number phone",
+  "form.paragraph": "Paragraph",
+  "form.aboutProject": "Text about your project",
+  "form.uploadLogo": "Upload Logotype",
+  "form.uploadBg": "Upload Background"
+}
