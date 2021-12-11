@@ -3,6 +3,7 @@ import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import { Box, Button, IconButton, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { Link } from 'react-scroll';
 
 import { theme } from '../../theme/theme';
 import { Layout } from '../Layout/Layout';
@@ -34,30 +35,54 @@ export const Header = () => {
           <nav className={classes.nav}>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <a className={classes.link} href='#'>
+                <Link
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+                  to={'about'}
+                  className={classes.link}
+                >
                   Обо мне
-                </a>
+                </Link>
               </li>
               <li className={classes.listItem}>
-                <a className={classes.link} href='#'>
+                <Link
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+                  to={'portfolio'}
+                  className={classes.link}
+                >
                   Портфолио
-                </a>
+                </Link>
               </li>
               <li className={classes.listItem}>
-                <a className={classes.link} href='#'>
+                <Link
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                  to={'contacts'}
+                  className={classes.link}
+                >
                   Контакты
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
 
-          <Button
-            className={classes.button}
-            variant={'outlined'}
-            startIcon={<MarkEmailUnreadIcon />}
-          >
-            Связаться со мной
-          </Button>
+          <Link spy={true} smooth={true} duration={500} to={'form'}>
+            <Button
+              className={classes.button}
+              variant={'outlined'}
+              startIcon={<MarkEmailUnreadIcon />}
+            >
+              Связаться со мной
+            </Button>
+          </Link>
+
           {isMobile && (
             <IconButton onClick={handleMenuOpen}>
               <ListIcon fontSize={'large'} />
