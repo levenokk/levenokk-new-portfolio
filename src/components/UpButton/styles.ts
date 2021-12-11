@@ -9,12 +9,16 @@ type Props = {
 export const useStyles = makeStyles({
   button: (props: Props) => ({
     backgroundColor: theme.palette.primary.main,
-    width: 64,
-    height: 64,
+    minWidth: 44,
+    width: 44,
+    height: 44,
     borderRadius: '50%',
     position: 'fixed',
     right: 30,
     bottom: 30,
     opacity: props.showButton ? 1 : 0,
+    transform: `translateY(${props.showButton ? 0 : -20}%)`,
+    transition: 'opacity .1s, transform .2s',
+    zIndex: props.showButton ? 50 : -5,
   }),
 });
