@@ -1,4 +1,4 @@
-import { Footer, Header } from '../../components';
+import { Footer, Header, UpButton } from '../../components';
 import { AboutSection } from './AboutSection/AboutSection';
 import { FormSection } from './FormSection/FormSection';
 import { MainSection } from './MainSection/MainSection';
@@ -13,6 +13,7 @@ export default function Home() {
       <PortfolioSection />
       <FormSection />
       <Footer />
+      <UpButton />
     </>
   );
 }
