@@ -1,12 +1,11 @@
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import RoomIcon from '@mui/icons-material/Room';
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import { theme } from '../../theme/theme';
 import { FacebookIcon, GitHubIcon, InstagramIcon } from '../icons';
 import { Layout } from '../Layout/Layout';
 import {
@@ -23,6 +22,7 @@ import {
 } from './styles';
 
 export const Footer = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
 
   return (

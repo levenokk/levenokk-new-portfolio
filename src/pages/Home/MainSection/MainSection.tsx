@@ -1,16 +1,22 @@
 import AccessibilityIcon from '@mui/icons-material/Accessibility';
 import WorkIcon from '@mui/icons-material/Work';
-import { Box, Button, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import { Element } from 'react-scroll';
 
 import mainImage from '../../../../public/images/main.svg';
 import { Layout } from '../../../components';
-import { theme } from '../../../theme/theme';
 import { ButtonsWrapper, LeftWrapper, RightWrapper, Wrapper } from './styles';
 
 export const MainSection = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (

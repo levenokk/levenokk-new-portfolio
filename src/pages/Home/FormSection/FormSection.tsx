@@ -1,5 +1,11 @@
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
-import { Box, Button, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { Formik } from 'formik';
 import Image from 'next/image';
 import React from 'react';
@@ -7,10 +13,10 @@ import { Element } from 'react-scroll';
 
 import formImage from '../../../../public/images/form.svg';
 import { Layout, TextField } from '../../../components';
-import { theme } from '../../../theme/theme';
 import { Content, FormWrapper, ImageWrapper, Wrapper } from './styles';
 
 export const FormSection = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   const handleFormSubmit = () => {};

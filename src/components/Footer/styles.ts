@@ -32,7 +32,7 @@ export const SocialsWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 export const BottomWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   paddingTop: 56,
   paddingBottom: 100,
-  backgroundColor: '#EEF5FF',
+  backgroundColor: theme.palette.mode === 'light' ? '#EEF5FF' : '#000',
   [theme.breakpoints.down('tablet')]: {
     paddingTop: 56 / 2,
     paddingBottom: 100 / 2,
@@ -80,7 +80,7 @@ export const ListItem = styled('li')(() => ({
 export const FooterBottom = styled(Box)<BoxProps>(({ theme }) => ({
   paddingTop: 20,
   paddingBottom: 20,
-  backgroundColor: '#E1EDFF',
+  backgroundColor: theme.palette.mode === 'light' ? '#E1EDFF' : '#252424',
   [theme.breakpoints.down('tablet')]: {
     paddingTop: 20 / 2,
     paddingBottom: 20 / 2,

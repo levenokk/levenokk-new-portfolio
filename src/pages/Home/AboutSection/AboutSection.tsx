@@ -1,5 +1,11 @@
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import { Box, Button, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import { Element } from 'react-scroll';
@@ -11,7 +17,6 @@ import {
   GitHubIcon,
   InstagramIcon,
 } from '../../../components/icons';
-import { theme } from '../../../theme/theme';
 import {
   Content,
   ContentWrapper,
@@ -24,6 +29,7 @@ import {
 } from './styles';
 
 export const AboutSection = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (

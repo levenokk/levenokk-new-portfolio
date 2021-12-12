@@ -2,8 +2,6 @@ import { Box, BoxProps, Button as MButton, ButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Link as ScrollLink, LinkProps } from 'react-scroll';
 
-import { theme } from '../../theme/theme';
-
 export const Wrapper = styled(Box)<BoxProps>(() => ({
   position: 'absolute',
   width: '100%',
@@ -19,13 +17,13 @@ export const WrapperInner = styled(Box)<BoxProps>(() => ({
   alignItems: 'center',
 }));
 
-export const Nav = styled(Box)<BoxProps>(() => ({
+export const Nav = styled(Box)<BoxProps>(({ theme }) => ({
   [theme.breakpoints.down('laptop')]: {
     display: 'none',
   },
 }));
 
-export const Link = styled(ScrollLink)<LinkProps>(() => ({
+export const Link = styled(ScrollLink)<LinkProps>(({ theme }) => ({
   color: theme.palette.text.primary,
   fontSize: 18,
   fontWeight: 500,
@@ -38,7 +36,7 @@ export const Link = styled(ScrollLink)<LinkProps>(() => ({
   },
 }));
 
-export const List = styled('ul')(() => ({
+export const List = styled('ul')(({ theme }) => ({
   padding: 0,
   margin: 0,
   listStyle: 'none',
@@ -49,7 +47,7 @@ export const List = styled('ul')(() => ({
   },
 }));
 
-export const ListItem = styled('li')(() => ({
+export const ListItem = styled('li')(({ theme }) => ({
   marginLeft: 70,
   '&:first-child': {
     marginLeft: 0,
@@ -60,13 +58,13 @@ export const ListItem = styled('li')(() => ({
   },
 }));
 
-export const Button = styled(MButton)<ButtonProps>(() => ({
+export const Button = styled(MButton)<ButtonProps>(({ theme }) => ({
   [theme.breakpoints.down('laptop')]: {
     display: 'none',
   },
 }));
 
-export const MobileMenu = styled(Box)<BoxProps>(() => ({
+export const MobileMenu = styled(Box)<BoxProps>(({ theme }) => ({
   position: 'fixed',
   top: 0,
   left: 0,

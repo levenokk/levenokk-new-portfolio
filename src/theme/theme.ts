@@ -1,15 +1,26 @@
-import { createTheme } from '@mui/material';
+import { createTheme, useMediaQuery } from '@mui/material';
+import { useMemo } from 'react';
 
 import { breakpoints } from './breakpoints';
 import { button } from './components/button';
-import { palette } from './palette';
+import { getDesignTokens } from './palette';
 import { typography } from './typography';
 
-export const theme = createTheme({
-  palette,
-  typography,
-  components: {
-    ...button,
-  },
-  breakpoints,
-});
+export const useTheme = () => {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  return useMemo(
+    () =>
+      createTheme({
+        palette: {
+          ...getDesignTokens(prefersDarkMode ? 'dark' : 'light'),
+        },
+        typography,
+        components: {
+          ...button,
+        },
+        breakpoints,
+      }),
+    [prefersDarkMode],
+  );
+};

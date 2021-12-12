@@ -1,10 +1,11 @@
 import ListIcon from '@mui/icons-material/List';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
-import { Box, IconButton, useMediaQuery } from '@mui/material';
+import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-import { theme } from '../../theme/theme';
+import Logo from '../../../public/images/logo.svg';
+import LogoLight from '../../../public/images/logoLight.svg';
 import { Layout } from '../Layout/Layout';
 import { HeaderMobileMenu } from './HeaderMobileMenu';
 import {
@@ -18,7 +19,10 @@ import {
 } from './styles';
 
 export const Header = () => {
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
+
+  const isDarkMode = theme.palette.mode === 'dark';
 
   const [isOpen, setOpen] = useState(false);
 
@@ -34,7 +38,7 @@ export const Header = () => {
             <Image
               alt={'logo'}
               layout={'responsive'}
-              src={require('../../../public/images/logo.svg')}
+              src={isDarkMode ? LogoLight : Logo}
             />
           </Box>
 
