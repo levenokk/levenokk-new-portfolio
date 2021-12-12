@@ -6,4 +6,5 @@ module.exports = {
     locales: ['en-US'],
     defaultLocale: 'en-US',
   },
+  experimental: { esmExternals: true },
 };

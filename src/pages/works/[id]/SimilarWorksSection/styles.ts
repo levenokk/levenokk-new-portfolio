@@ -1,8 +1,8 @@
-import {Box, BoxProps, IconProps} from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Box, BoxProps, IconProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-export const Wrapper = styled(Box)<BoxProps>(() => ({
+export const Wrapper = styled('section')(() => ({
   backgroundColor: 'rgba(0, 106, 242, 0.03)',
   paddingBottom: 110,
   paddingTop: 100,
