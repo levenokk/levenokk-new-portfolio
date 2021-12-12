@@ -1,82 +1,90 @@
-import { makeStyles } from '@mui/styles';
+import { Box, BoxProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import { theme } from '../../theme/theme';
 
-export const useStyles = makeStyles({
-  topWrapper: {
-    paddingTop: 35,
-    paddingBottom: 29,
-    backgroundColor: '#D7FFB8',
-    [theme.breakpoints.down('tablet')]: {
-      paddingTop: 35 / 2,
-      paddingBottom: 29 / 2,
-    },
+export const TopWrapper = styled(Box)<BoxProps>(() => ({
+  paddingTop: 35,
+  paddingBottom: 29,
+  backgroundColor: '#D7FFB8',
+  [theme.breakpoints.down('tablet')]: {
+    paddingTop: 35 / 2,
+    paddingBottom: 29 / 2,
   },
-  topWrapperInner: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    [theme.breakpoints.down('mobile')]: {
-      flexDirection: 'column',
-    },
+}));
+
+export const TopWrapperInner = styled(Box)<BoxProps>(() => ({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [theme.breakpoints.down('mobile')]: {
+    flexDirection: 'column',
   },
-  socialsWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    [theme.breakpoints.down('mobile')]: {
-      marginTop: 10,
-    },
+}));
+
+export const SocialsWrapper = styled(Box)<BoxProps>(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  [theme.breakpoints.down('mobile')]: {
+    marginTop: 10,
   },
-  socialLink: {
-    marginLeft: 23,
+}));
+
+export const BottomWrapper = styled(Box)<BoxProps>(() => ({
+  paddingTop: 56,
+  paddingBottom: 100,
+  backgroundColor: '#EEF5FF',
+  [theme.breakpoints.down('tablet')]: {
+    paddingTop: 56 / 2,
+    paddingBottom: 100 / 2,
   },
-  bottomWrapper: {
-    paddingTop: 56,
-    paddingBottom: 100,
-    backgroundColor: '#EEF5FF',
-    [theme.breakpoints.down('tablet')]: {
-      paddingTop: 56 / 2,
-      paddingBottom: 100 / 2,
-    },
+}));
+
+export const BottomWrapperInner = styled(Box)<BoxProps>(() => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  columnGap: '90px',
+  rowGap: '30px',
+  [theme.breakpoints.down('laptop')]: {
+    gridTemplateColumns: 'repeat(2, 1fr)',
   },
-  bottomWrapperInner: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    columnGap: '90px',
-    rowGap: '30px',
-    [theme.breakpoints.down('laptop')]: {
-      gridTemplateColumns: 'repeat(2, 1fr)',
-    },
-    [theme.breakpoints.down('mobile')]: {
-      gridTemplateColumns: 'repeat(1, 1fr)',
-    },
+  [theme.breakpoints.down('mobile')]: {
+    gridTemplateColumns: 'repeat(1, 1fr)',
   },
-  footerList: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
+}));
+
+export const FooterList = styled('ul')(() => ({
+  listStyle: 'none',
+  margin: 0,
+  padding: 0,
+}));
+
+export const Link = styled('a')(() => ({
+  color: theme.palette.grey['400'],
+  fontSize: 16,
+  fontWeight: 300,
+  textDecoration: 'none',
+  fontFamily: 'Rubik, sans-serif',
+  '&:hover': {
+    color: theme.palette.primary.main,
   },
-  link: {
-    color: theme.palette.grey['400'],
-    fontSize: 16,
-    fontWeight: 300,
-    textDecoration: 'none',
-    fontFamily: 'Rubik, sans-serif',
-    '&:hover': {
-      color: theme.palette.primary.main,
-    },
+}));
+
+export const SocialLink = styled('a')(() => ({
+  marginLeft: 23,
+}));
+
+export const ListItem = styled('li')(() => ({
+  marginBottom: 10,
+}));
+
+export const FooterBottom = styled(Box)<BoxProps>(() => ({
+  paddingTop: 20,
+  paddingBottom: 20,
+  backgroundColor: '#E1EDFF',
+  [theme.breakpoints.down('tablet')]: {
+    paddingTop: 20 / 2,
+    paddingBottom: 20 / 2,
   },
-  listItem: {
-    marginBottom: 10,
-  },
-  footerBottom: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: '#E1EDFF',
-    [theme.breakpoints.down('tablet')]: {
-      paddingTop: 20 / 2,
-      paddingBottom: 20 / 2,
-    },
-  },
-});
+}));

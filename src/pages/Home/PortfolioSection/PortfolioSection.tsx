@@ -1,17 +1,14 @@
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import { Element } from 'react-scroll';
 
 import { Layout, ProjectCard } from '../../../components';
-import { useStyles } from './styles';
+import { Icon, Projects, Wrapper } from './styles';
 
 export const PortfolioSection = () => {
-  const classes = useStyles();
-
   return (
     <Element name={'portfolio'}>
-      <section className={classes.wrapper}>
+      <Wrapper>
         <Layout>
           <Typography mb={'6px'} textAlign={'center'} variant={'h2'}>
             <Typography
@@ -33,22 +30,18 @@ export const PortfolioSection = () => {
           >
             Тут собраны все мои работы за последнее время
           </Typography>
-          <Box className={classes.projects}>
+          <Projects>
             <ProjectCard />
             <ProjectCard />
             <ProjectCard />
-          </Box>
+          </Projects>
           <Box width={300} mx={'auto'}>
-            <Button
-              fullWidth
-              startIcon={<ChevronRightIcon className={classes.icon} />}
-              variant={'contained'}
-            >
+            <Button fullWidth startIcon={<Icon />} variant={'contained'}>
               Показать больше
             </Button>
           </Box>
         </Layout>
-      </section>
+      </Wrapper>
     </Element>
   );
 };

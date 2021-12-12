@@ -9,18 +9,27 @@ import React from 'react';
 import { theme } from '../../theme/theme';
 import { FacebookIcon, GitHubIcon, InstagramIcon } from '../icons';
 import { Layout } from '../Layout/Layout';
-import { useStyles } from './styles';
+import {
+  BottomWrapper,
+  BottomWrapperInner,
+  FooterBottom,
+  FooterList,
+  Link as LinkStyled,
+  ListItem,
+  SocialLink,
+  SocialsWrapper,
+  TopWrapper,
+  TopWrapperInner,
+} from './styles';
 
 export const Footer = () => {
-  const classes = useStyles();
-
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
 
   return (
     <footer>
-      <Box className={classes.topWrapper}>
+      <TopWrapper>
         <Layout>
-          <Box className={classes.topWrapperInner}>
+          <TopWrapperInner>
             <Box width={isMobile ? 180 : 230}>
               <Image
                 alt={'logo'}
@@ -28,23 +37,23 @@ export const Footer = () => {
                 src={require('../../../public/images/logoFooter.svg')}
               />
             </Box>
-            <Box className={classes.socialsWrapper}>
+            <SocialsWrapper>
               <a href='#' target={'_blank'}>
                 <InstagramIcon />
               </a>
-              <a className={classes.socialLink} href='#' target={'_blank'}>
+              <SocialLink href='#' target={'_blank'}>
                 <FacebookIcon />
-              </a>
-              <a className={classes.socialLink} href='#' target={'_blank'}>
+              </SocialLink>
+              <SocialLink href='#' target={'_blank'}>
                 <GitHubIcon />
-              </a>
-            </Box>
-          </Box>
+              </SocialLink>
+            </SocialsWrapper>
+          </TopWrapperInner>
         </Layout>
-      </Box>
-      <Box className={classes.bottomWrapper}>
+      </TopWrapper>
+      <BottomWrapper>
         <Layout>
-          <Box className={classes.bottomWrapperInner}>
+          <BottomWrapperInner>
             <Box>
               <Typography
                 mb={'25px'}
@@ -83,28 +92,28 @@ export const Footer = () => {
               >
                 Портфолио
               </Typography>
-              <ul className={classes.footerList}>
-                <li className={classes.listItem}>
+              <FooterList>
+                <ListItem>
                   <Link href={'#'}>
-                    <a className={classes.link}>Название проекта 1</a>
+                    <LinkStyled>Название проекта 1</LinkStyled>
                   </Link>
-                </li>
-                <li className={classes.listItem}>
+                </ListItem>
+                <ListItem>
                   <Link href={'#'}>
-                    <a className={classes.link}>Название проекта 2</a>
+                    <LinkStyled>Название проекта 2</LinkStyled>
                   </Link>
-                </li>
-                <li className={classes.listItem}>
+                </ListItem>
+                <ListItem>
                   <Link href={'#'}>
-                    <a className={classes.link}>Название проекта 3</a>
+                    <LinkStyled>Название проекта 3</LinkStyled>
                   </Link>
-                </li>
-                <li className={classes.listItem}>
+                </ListItem>
+                <ListItem>
                   <Link href={'#'}>
-                    <a className={classes.link}>Название проекта 4</a>
+                    <LinkStyled>Название проекта 4</LinkStyled>
                   </Link>
-                </li>
-              </ul>
+                </ListItem>
+              </FooterList>
             </Box>
 
             <Box>
@@ -120,31 +129,29 @@ export const Footer = () => {
                 <Box mr={'9px'}>
                   <MarkEmailUnreadIcon color={'primary'} />
                 </Box>
-                <a className={classes.link} href='mailto:levenokk@gmail.com'>
+                <LinkStyled href='mailto:levenokk@gmail.com'>
                   levenokk@gmail.com
-                </a>
+                </LinkStyled>
               </Box>
               <Box mb={'10px'} display={'flex'} alignItems={'center'}>
                 <Box mr={'9px'}>
                   <LocalPhoneIcon color={'primary'} />
                 </Box>
-                <a className={classes.link} href='tel:+38 (068) 083-64-70'>
+                <LinkStyled href='tel:+38 (068) 083-64-70'>
                   +38 (068) 083-64-70
-                </a>
+                </LinkStyled>
               </Box>
               <Box display={'flex'} alignItems={'center'}>
                 <Box mr={'9px'}>
                   <RoomIcon color={'primary'} />
                 </Box>
-                <a href={'#'} className={classes.link}>
-                  Украина, Киев
-                </a>
+                <LinkStyled href={'#'}>Украина, Киев</LinkStyled>
               </Box>
             </Box>
-          </Box>
+          </BottomWrapperInner>
         </Layout>
-      </Box>
-      <Box className={classes.footerBottom}>
+      </BottomWrapper>
+      <FooterBottom>
         <Typography
           fontSize={isMobile ? 14 : 16}
           variant={'body2'}
@@ -152,7 +159,7 @@ export const Footer = () => {
         >
           Levenokk 2021 © Все права защищены
         </Typography>
-      </Box>
+      </FooterBottom>
     </footer>
   );
 };

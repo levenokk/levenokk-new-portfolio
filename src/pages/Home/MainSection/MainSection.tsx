@@ -8,18 +8,16 @@ import { Element } from 'react-scroll';
 import mainImage from '../../../../public/images/main.svg';
 import { Layout } from '../../../components';
 import { theme } from '../../../theme/theme';
-import { useStyles } from './styles';
+import { ButtonsWrapper, LeftWrapper, RightWrapper, Wrapper } from './styles';
 
 export const MainSection = () => {
-  const classes = useStyles();
-
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (
     <Element name={'main'}>
       <Layout>
-        <main className={classes.wrapper}>
-          <Box className={classes.leftWrapper}>
+        <Wrapper>
+          <LeftWrapper>
             <Typography variant={'h1'}>
               <Typography
                 fontWeight={'inherit'}
@@ -36,7 +34,7 @@ export const MainSection = () => {
               Максик - лучший веб-разработчик и по жизни красавчик) Становитесь
               настоящим мастерами программирования!
             </Typography>
-            <Box className={classes.buttonsWrapper}>
+            <ButtonsWrapper>
               <Box
                 flexGrow={1}
                 mb={isMobile ? '10px' : 0}
@@ -59,12 +57,12 @@ export const MainSection = () => {
                   Больше обо мне
                 </Button>
               </Box>
-            </Box>
-          </Box>
-          <Box className={classes.rightWrapper}>
+            </ButtonsWrapper>
+          </LeftWrapper>
+          <RightWrapper>
             <Image alt={''} src={mainImage} layout={'responsive'} />
-          </Box>
-        </main>
+          </RightWrapper>
+        </Wrapper>
       </Layout>
     </Element>
   );

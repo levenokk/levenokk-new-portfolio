@@ -8,7 +8,7 @@ type Props = {
   label: string;
   name: string;
   multiline?: boolean;
-  rows?: number,
+  rows?: number;
 };
 
 export const TextField: React.FC<Props> = ({
