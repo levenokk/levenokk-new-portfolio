@@ -1,9 +1,7 @@
 import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { theme } from '../../theme/theme';
-
-export const TopWrapper = styled(Box)<BoxProps>(() => ({
+export const TopWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   paddingTop: 35,
   paddingBottom: 29,
   backgroundColor: '#D7FFB8',
@@ -13,7 +11,7 @@ export const TopWrapper = styled(Box)<BoxProps>(() => ({
   },
 }));
 
-export const TopWrapperInner = styled(Box)<BoxProps>(() => ({
+export const TopWrapperInner = styled(Box)<BoxProps>(({ theme }) => ({
   width: '100%',
   display: 'flex',
   justifyContent: 'space-between',
@@ -23,7 +21,7 @@ export const TopWrapperInner = styled(Box)<BoxProps>(() => ({
   },
 }));
 
-export const SocialsWrapper = styled(Box)<BoxProps>(() => ({
+export const SocialsWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   [theme.breakpoints.down('mobile')]: {
@@ -31,7 +29,7 @@ export const SocialsWrapper = styled(Box)<BoxProps>(() => ({
   },
 }));
 
-export const BottomWrapper = styled(Box)<BoxProps>(() => ({
+export const BottomWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   paddingTop: 56,
   paddingBottom: 100,
   backgroundColor: '#EEF5FF',
@@ -41,7 +39,7 @@ export const BottomWrapper = styled(Box)<BoxProps>(() => ({
   },
 }));
 
-export const BottomWrapperInner = styled(Box)<BoxProps>(() => ({
+export const BottomWrapperInner = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   columnGap: '90px',
@@ -60,7 +58,7 @@ export const FooterList = styled('ul')(() => ({
   padding: 0,
 }));
 
-export const Link = styled('a')(() => ({
+export const Link = styled('a')(({ theme }) => ({
   color: theme.palette.grey['400'],
   fontSize: 16,
   fontWeight: 300,
@@ -79,7 +77,7 @@ export const ListItem = styled('li')(() => ({
   marginBottom: 10,
 }));
 
-export const FooterBottom = styled(Box)<BoxProps>(() => ({
+export const FooterBottom = styled(Box)<BoxProps>(({ theme }) => ({
   paddingTop: 20,
   paddingBottom: 20,
   backgroundColor: '#E1EDFF',

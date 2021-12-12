@@ -1,16 +1,21 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Box, Button, Typography } from '@mui/material';
-import Image from 'next/image';
+import { Typography } from '@mui/material';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 import tempImage from '../../../public/images/temp.png';
-import { useStyles } from './styles';
+import {
+  Button,
+  ButtonWrapper,
+  Description,
+  DescriptionWrapper,
+  Image,
+  ImageWrapper,
+  Link as LinkStyled,
+} from './styles';
 
 export const ProjectCard = () => {
   const [isShowDescription, setDescription] = useState(false);
-
-  const classes = useStyles({ isShowDescription });
 
   const handleOpen = () => {
     setDescription((prev) => !prev);
@@ -20,42 +25,41 @@ export const ProjectCard = () => {
     <article>
       <Link href={'/'}>
         <a>
-          <Box position={'relative'} className={classes.imageWrapper}>
-            <Box className={classes.description}>
-              <Box className={classes.descriptionWrapper}>
+          <ImageWrapper position={'relative'}>
+            <Description isActive={isShowDescription}>
+              <DescriptionWrapper>
                 <Typography color={'common.white'} variant={'body1'}>
                   Разнообразный и богатый опыт постоянное информационно-
                   пропагандистское обеспечение нашей деятельности требуют от нас
                   анализа существенных финансовых и административных условий
                 </Typography>
-              </Box>
-            </Box>
+              </DescriptionWrapper>
+            </Description>
             <Image
               alt={''}
-              className={classes.image}
               src={tempImage}
               layout={'fill'}
               objectFit={'cover'}
               objectPosition={'center'}
             />
-          </Box>
+          </ImageWrapper>
         </a>
       </Link>
-      <Box className={classes.buttonWrapper}>
+      <ButtonWrapper>
         <Button
+          isActive={isShowDescription}
           onClick={handleOpen}
           variant={'contained'}
-          className={classes.button}
         >
           <ChevronRightIcon fontSize={'large'} />
         </Button>
-      </Box>
+      </ButtonWrapper>
       <Link href={'/'}>
-        <a className={classes.link}>
+        <LinkStyled>
           <Typography variant={'h5'}>
             Проект Максика с названием большим
           </Typography>
-        </a>
+        </LinkStyled>
       </Link>
     </article>
   );

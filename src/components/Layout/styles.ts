@@ -1,7 +1,6 @@
-import { makeStyles } from '@mui/styles';
+import { Container, ContainerProps } from '@mui/material';
+import { styled } from '@mui/styles';
 
-export const useStyles = makeStyles({
-  wrapper: {
-    position: 'relative',
-  },
-});
+export const Wrapper = styled(Container)<ContainerProps>(() => ({
+  position: 'relative',
+}));
