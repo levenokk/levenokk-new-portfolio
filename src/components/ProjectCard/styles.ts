@@ -10,12 +10,19 @@ interface StyledButtonProps extends ButtonProps {
   isActive: boolean;
 }
 
-export const Button = styled(MButton)<StyledButtonProps>(({ isActive }) => ({
-  width: 64,
-  height: 64,
-  borderRadius: '50%',
-  transform: `rotate(${isActive ? 270 : 0}deg)`,
-}));
+export const Button = styled(MButton)<StyledButtonProps>(
+  ({ isActive, theme }) => ({
+    width: 60,
+    minWidth: 40,
+    height: 60,
+    borderRadius: '50%',
+    transform: `rotate(${isActive ? 270 : 0}deg)`,
+    [theme.breakpoints.down('mobile')]: {
+      width: 50,
+      height: 50,
+    },
+  }),
+);
 
 export const ButtonWrapper = styled(Box)<BoxProps>(() => ({
   position: 'relative',

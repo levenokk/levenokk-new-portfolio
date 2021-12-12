@@ -2,10 +2,14 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Box, BoxProps, IconProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const Wrapper = styled('section')(() => ({
+export const Wrapper = styled('section')(({ theme }) => ({
   backgroundColor: 'rgba(0, 106, 242, 0.03)',
   paddingBottom: 110,
   paddingTop: 100,
+  [theme.breakpoints.down('laptop')]: {
+    paddingBottom: 110 / 2,
+    paddingTop: 100 / 2,
+  },
 }));
 
 export const Projects = styled(Box)<BoxProps>(({ theme }) => ({
