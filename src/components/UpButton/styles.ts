@@ -1,13 +1,12 @@
-import { makeStyles } from '@mui/styles';
+import { Button as MButton, ButtonProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-import { theme } from '../../theme/theme';
+interface StyledButtonProps extends ButtonProps {
+  isShow: boolean;
+}
 
-type Props = {
-  showButton: boolean;
-};
-
-export const useStyles = makeStyles({
-  button: (props: Props) => ({
+export const Button = styled(MButton)<StyledButtonProps>(
+  ({ theme, isShow }) => ({
     backgroundColor: theme.palette.primary.main,
     minWidth: 44,
     width: 44,
@@ -16,9 +15,9 @@ export const useStyles = makeStyles({
     position: 'fixed',
     right: 20,
     bottom: 20,
-    opacity: props.showButton ? 1 : 0,
-    transform: `translateY(${props.showButton ? 0 : -20}%)`,
+    opacity: isShow ? 1 : 0,
+    transform: `translateY(${isShow ? 0 : -20}%)`,
     transition: 'opacity .2s linear, transform .3s linear',
-    zIndex: props.showButton ? 50 : -5,
+    zIndex: isShow ? 50 : -5,
   }),
-});
+);

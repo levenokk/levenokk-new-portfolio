@@ -1,8 +1,8 @@
-import { Box, TextField as MTextField, TextFieldProps } from '@mui/material';
+import { TextField as MTextField, TextFieldProps } from '@mui/material';
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import { useStyles } from './styles';
+import { Wrapper } from './styles';
 
 type Props = {
   label: string;
@@ -17,8 +17,6 @@ export const TextField: React.FC<Props> = ({
   multiline = false,
   rows,
 }) => {
-  const classes = useStyles();
-
   const { handleChange, handleBlur, getFieldMeta } = useFormikContext();
   const { value, error } = getFieldMeta(name);
 
@@ -35,8 +33,8 @@ export const TextField: React.FC<Props> = ({
   };
 
   return (
-    <Box className={classes.wrapper}>
+    <Wrapper>
       <MTextField {...inputProps} variant='standard' fullWidth />
-    </Box>
+    </Wrapper>
   );
 };

@@ -59,6 +59,7 @@ export const ImageWrapper = styled(Box)<BoxProps>(() => ({
 export const Link = styled('a')(({ theme }) => ({
   textDecoration: 'none',
   color: 'inherit',
+  cursor: 'pointer',
   '&:hover': {
     color: theme.palette.primary.main,
   },

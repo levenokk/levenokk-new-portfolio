@@ -1,14 +1,11 @@
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { animateScroll as scroll } from 'react-scroll';
 
-import { useStyles } from './styles';
+import { Button } from './styles';
 
 export const UpButton = () => {
   const [showButton, setShowButton] = useState(false);
-
-  const classes = useStyles({ showButton });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,11 +26,7 @@ export const UpButton = () => {
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      variant={'contained'}
-      className={classes.button}
-    >
+    <Button isShow={showButton} onClick={handleClick} variant={'contained'}>
       <KeyboardArrowUpIcon fontSize={'medium'} />
     </Button>
   );

@@ -1,7 +1,6 @@
-import { makeStyles } from '@mui/styles';
+import { Box, BoxProps } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-export const useStyles = makeStyles({
-  wrapper: {
-    marginBottom: 10,
-  },
-});
+export const Wrapper = styled(Box)<BoxProps>(() => ({
+  marginBottom: 10,
+}));
