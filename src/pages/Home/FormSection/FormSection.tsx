@@ -8,11 +8,9 @@ import { Element } from 'react-scroll';
 import formImage from '../../../../public/images/form.svg';
 import { Layout, TextField } from '../../../components';
 import { theme } from '../../../theme/theme';
-import { useStyles } from './styles';
+import { Content, FormWrapper, ImageWrapper, Wrapper } from './styles';
 
 export const FormSection = () => {
-  const classes = useStyles();
-
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   const handleFormSubmit = () => {};
@@ -20,11 +18,11 @@ export const FormSection = () => {
   return (
     <Element name={'form'}>
       <Layout>
-        <section className={classes.wrapper}>
-          <Box className={classes.imageWrapper}>
+        <Wrapper>
+          <ImageWrapper>
             <Image alt={''} src={formImage} layout={'responsive'} />
-          </Box>
-          <Box className={classes.content}>
+          </ImageWrapper>
+          <Content>
             <Typography variant={'h2'}>
               <Typography
                 fontWeight={'inherit'}
@@ -42,7 +40,7 @@ export const FormSection = () => {
             </Typography>
             <Formik onSubmit={handleFormSubmit} initialValues={{}}>
               {({ handleSubmit }) => (
-                <Box className={classes.formWrapper}>
+                <FormWrapper>
                   <TextField name={'name'} label={'Ваше имя'} />
                   <TextField name={'email'} label={'Ваше имя'} />
                   <TextField
@@ -61,11 +59,11 @@ export const FormSection = () => {
                       Отправить
                     </Button>
                   </Box>
-                </Box>
+                </FormWrapper>
               )}
             </Formik>
-          </Box>
-        </section>
+          </Content>
+        </Wrapper>
       </Layout>
     </Element>
   );
