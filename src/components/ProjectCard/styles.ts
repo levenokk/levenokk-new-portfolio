@@ -34,7 +34,7 @@ export const Description = styled(Box)<DescriptionProps>(({ isActive }) => ({
   left: 0,
   bottom: 0,
   top: 0,
-  zIndex: 2,
+  zIndex: isActive ? 2 : -10,
   transform: `translateY(${isActive ? 0 : -20}%)`,
   opacity: isActive ? 1 : 0,
   transition: 'opacity .2s linear, transform .1s linear',

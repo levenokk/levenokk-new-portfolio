@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import tempImage from '../../../public/images/temp.png';
+import { ROUTES } from '../../constants';
 import {
   Button,
   ButtonWrapper,
@@ -23,7 +24,7 @@ export const ProjectCard = () => {
 
   return (
     <article>
-      <Link href={'/'}>
+      <Link href={ROUTES.works + '/1'}>
         <a>
           <ImageWrapper position={'relative'}>
             <Description isActive={isShowDescription}>
@@ -54,7 +55,7 @@ export const ProjectCard = () => {
           <ChevronRightIcon fontSize={'large'} />
         </Button>
       </ButtonWrapper>
-      <Link href={'/'}>
+      <Link href={ROUTES.works + '/1'}>
         <LinkStyled>
           <Typography variant={'h5'}>
             Проект Максика с названием большим
