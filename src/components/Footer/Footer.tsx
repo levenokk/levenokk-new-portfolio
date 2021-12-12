@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import { ROUTES } from '../../constants';
 import { FacebookIcon, GitHubIcon, InstagramIcon } from '../icons';
 import { Layout } from '../Layout/Layout';
 import {
@@ -31,7 +32,7 @@ export const Footer = () => {
         <Layout>
           <TopWrapperInner>
             <Box width={isMobile ? 180 : 230}>
-              <Link href={'/'}>
+              <Link href={ROUTES.home}>
                 <a>
                   <Image
                     alt={'logo'}

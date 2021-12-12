@@ -6,11 +6,11 @@ export const Wrapper = styled('section')(({ theme }) => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   paddingTop: 110,
-  marginBottom: 100,
+  paddingBottom: 100,
   [theme.breakpoints.down('laptop')]: {
     flexDirection: 'column',
     paddingTop: 110 / 2,
-    marginBottom: 100 / 2,
+    paddingBottom: 100 / 2,
   },
 }));
 

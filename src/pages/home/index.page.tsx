@@ -1,9 +1,8 @@
 import { useTheme } from '@mui/material';
 import Head from 'next/head';
 
-import { Footer, Header, UpButton } from '../../components';
+import { Footer, FormSection, Header, UpButton } from '../../components';
 import { AboutSection } from './AboutSection/AboutSection';
-import { FormSection } from './FormSection/FormSection';
 import { MainSection } from './MainSection/MainSection';
 import { PortfolioSection } from './PortfolioSection/PortfolioSection';
 

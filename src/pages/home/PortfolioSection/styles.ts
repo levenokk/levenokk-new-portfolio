@@ -1,6 +1,6 @@
-import {Box, BoxProps, IconProps} from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Box, BoxProps, IconProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 export const Wrapper = styled('section')(({ theme }) => ({
   paddingTop: 100,

@@ -3,10 +3,12 @@ import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import Logo from '../../../public/images/logo.svg';
 import LogoLight from '../../../public/images/logoLight.svg';
+import { ROUTES } from '../../constants';
 import { Layout } from '../Layout/Layout';
 import { HeaderMobileMenu } from './HeaderMobileMenu';
 import {
@@ -22,6 +24,7 @@ import {
 export const Header = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
+  const router = useRouter();
 
   const isDarkMode = theme.palette.mode === 'dark';
 
@@ -36,7 +39,7 @@ export const Header = () => {
       <Layout>
         <WrapperInner>
           <Box width={isMobile ? 180 : 230}>
-            <NextLink href={'/'}>
+            <NextLink href={ROUTES.home}>
               <a>
                 <Image
                   alt={'logo'}
@@ -53,6 +56,7 @@ export const Header = () => {
                 <Link
                   spy={true}
                   smooth={true}
+                  delay={100}
                   offset={50}
                   duration={500}
                   to={'about'}

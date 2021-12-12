@@ -1,4 +1,5 @@
 export * from './Footer/Footer';
+export * from './FormSection/FormSection';
 export * from './Header/Header';
 export * from './Layout/Layout';
 export * from './ProjectCard/ProjectCard';
