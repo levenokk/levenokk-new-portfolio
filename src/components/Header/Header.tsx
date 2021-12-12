@@ -2,6 +2,7 @@ import ListIcon from '@mui/icons-material/List';
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import React, { useState } from 'react';
 
 import Logo from '../../../public/images/logo.svg';
@@ -35,11 +36,15 @@ export const Header = () => {
       <Layout>
         <WrapperInner>
           <Box width={isMobile ? 180 : 230}>
-            <Image
-              alt={'logo'}
-              layout={'responsive'}
-              src={isDarkMode ? LogoLight : Logo}
-            />
+            <NextLink href={'/'}>
+              <a>
+                <Image
+                  alt={'logo'}
+                  layout={'responsive'}
+                  src={isDarkMode ? LogoLight : Logo}
+                />
+              </a>
+            </NextLink>
           </Box>
 
           <Nav>

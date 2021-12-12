@@ -31,11 +31,15 @@ export const Footer = () => {
         <Layout>
           <TopWrapperInner>
             <Box width={isMobile ? 180 : 230}>
-              <Image
-                alt={'logo'}
-                layout={'responsive'}
-                src={require('../../../public/images/logoFooter.svg')}
-              />
+              <Link href={'/'}>
+                <a>
+                  <Image
+                    alt={'logo'}
+                    layout={'responsive'}
+                    src={require('../../../public/images/logoFooter.svg')}
+                  />
+                </a>
+              </Link>
             </Box>
             <SocialsWrapper>
               <a href='#' target={'_blank'}>
