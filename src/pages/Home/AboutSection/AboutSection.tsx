@@ -12,17 +12,24 @@ import {
   InstagramIcon,
 } from '../../../components/icons';
 import { theme } from '../../../theme/theme';
-import { useStyles } from './styles';
+import {
+  Content,
+  ContentWrapper,
+  Grid,
+  ImageWrapper,
+  Link,
+  SocialLink,
+  SocialsWrapper,
+  Wrapper,
+} from './styles';
 
 export const AboutSection = () => {
-  const classes = useStyles();
-
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
   return (
     <Element name={'about'}>
       <Layout>
-        <section className={classes.wrapper}>
+        <Wrapper>
           <Typography variant={'h2'}>
             <Typography
               fontWeight={'inherit'}
@@ -38,11 +45,11 @@ export const AboutSection = () => {
           <Typography color={'grey.400'} variant={'body1'}>
             Основная информация обо мне и чем я занимаюсь
           </Typography>
-          <Box className={classes.contentWrapper}>
-            <Box className={classes.imageWrapper}>
+          <ContentWrapper>
+            <ImageWrapper>
               <Image alt={''} src={meImage} layout={'responsive'} />
-            </Box>
-            <Box className={classes.content}>
+            </ImageWrapper>
+            <Content>
               <Typography variant={'h3'} mb={'16px'}>
                 <Typography
                   fontWeight={'inherit'}
@@ -75,7 +82,7 @@ export const AboutSection = () => {
                 nodeJs, mongoDb, fireBase, wordpress, mysql
               </Typography>
               <Element name={'contacts'}>
-                <Box className={classes.grid}>
+                <Grid>
                   <Typography variant={'body2'}>
                     <Typography
                       fontWeight={'bold'}
@@ -85,14 +92,13 @@ export const AboutSection = () => {
                     >
                       Моя почта:
                     </Typography>{' '}
-                    <a
-                      className={classes.link}
+                    <Link
                       href='mailto:levenokk@gmail.com'
                       target={'_blank'}
                       rel='noreferrer'
                     >
                       levenokk@gmail.com
-                    </a>
+                    </Link>
                   </Typography>
                   <Box flexWrap={'wrap'} display={'flex'}>
                     <Typography mr={'23px'} variant={'body2'}>
@@ -105,25 +111,17 @@ export const AboutSection = () => {
                         Я в соц сетях:
                       </Typography>
                     </Typography>
-                    <Box className={classes.socialsWrapper}>
+                    <SocialsWrapper>
                       <a href='#' target={'_blank'}>
                         <InstagramIcon />
                       </a>
-                      <a
-                        className={classes.socialLink}
-                        href='#'
-                        target={'_blank'}
-                      >
+                      <SocialLink href='#' target={'_blank'}>
                         <FacebookIcon />
-                      </a>
-                      <a
-                        className={classes.socialLink}
-                        href='#'
-                        target={'_blank'}
-                      >
+                      </SocialLink>
+                      <SocialLink href='#' target={'_blank'}>
                         <GitHubIcon />
-                      </a>
-                    </Box>
+                      </SocialLink>
+                    </SocialsWrapper>
                   </Box>
 
                   <Typography variant={'body2'}>
@@ -135,11 +133,11 @@ export const AboutSection = () => {
                     >
                       Мой телефон:
                     </Typography>{' '}
-                    <a className={classes.link} href='tel:+38 (068) 083-64-70'>
+                    <Link href='tel:+38 (068) 083-64-70'>
                       +38 (068) 083-64-70
-                    </a>
+                    </Link>
                   </Typography>
-                </Box>
+                </Grid>
               </Element>
 
               <Button
@@ -149,9 +147,9 @@ export const AboutSection = () => {
               >
                 Загрузить моё резюме
               </Button>
-            </Box>
-          </Box>
-        </section>
+            </Content>
+          </ContentWrapper>
+        </Wrapper>
       </Layout>
     </Element>
   );
