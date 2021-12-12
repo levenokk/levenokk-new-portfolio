@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { Element } from 'react-scroll';
+import { Element, Link } from 'react-scroll';
 
 import mainImage from '../../../../public/images/main.svg';
 import { Layout } from '../../../components';
@@ -46,22 +46,38 @@ export const MainSection = () => {
                 mb={isMobile ? '10px' : 0}
                 mr={isMobile ? 0 : '10px'}
               >
-                <Button
-                  fullWidth
-                  variant={'contained'}
-                  startIcon={<WorkIcon />}
+                <Link
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+                  to={'portfolio'}
                 >
-                  Портфолио
-                </Button>
+                  <Button
+                    fullWidth
+                    variant={'contained'}
+                    startIcon={<WorkIcon />}
+                  >
+                    Портфолио
+                  </Button>
+                </Link>
               </Box>
               <Box flexGrow={1} ml={isMobile ? 0 : '10px'}>
-                <Button
-                  variant={'text'}
-                  fullWidth
-                  startIcon={<AccessibilityIcon />}
+                <Link
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+                  to={'about'}
                 >
-                  Больше обо мне
-                </Button>
+                  <Button
+                    variant={'text'}
+                    fullWidth
+                    startIcon={<AccessibilityIcon />}
+                  >
+                    Больше обо мне
+                  </Button>
+                </Link>
               </Box>
             </ButtonsWrapper>
           </LeftWrapper>
