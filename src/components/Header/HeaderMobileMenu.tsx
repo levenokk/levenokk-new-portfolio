@@ -13,9 +13,13 @@ import {
 
 type Props = {
   onHandleMenuOpen: () => void;
+  onHandleAboutMeClick: () => void;
 };
 
-export const HeaderMobileMenu: React.FC<Props> = ({ onHandleMenuOpen }) => {
+export const HeaderMobileMenu: React.FC<Props> = ({
+  onHandleMenuOpen,
+  onHandleAboutMeClick,
+}) => {
   return (
     <MobileMenu>
       <ButtonWrapper>
@@ -28,7 +32,7 @@ export const HeaderMobileMenu: React.FC<Props> = ({ onHandleMenuOpen }) => {
           <List>
             <ListItem>
               <Link
-                onClick={onHandleMenuOpen}
+                onClick={onHandleAboutMeClick}
                 spy={true}
                 smooth={true}
                 offset={50}

@@ -4,7 +4,7 @@ import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import Logo from '../../../public/images/logo.svg';
 import LogoLight from '../../../public/images/logoLight.svg';
@@ -26,12 +26,26 @@ export const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
   const router = useRouter();
 
-  const isDarkMode = theme.palette.mode === 'dark';
-
+  const [isHomePage, setIsHomePage] = useState(true);
   const [isOpen, setOpen] = useState(false);
 
-  const handleMenuOpen = () => {
+  const isDarkMode = useMemo(
+    () => theme.palette.mode === 'dark',
+    [theme.palette.mode],
+  );
+
+  useEffect(() => {
+    setIsHomePage(router.pathname === '/');
+  }, [router.pathname]);
+
+  const onHandleMenuOpen = () => {
     setOpen((prev) => !prev);
+  };
+
+  const onHandleAboutMeClick = async () => {
+    if (!isHomePage) {
+      await router.push('/?to=about');
+    }
   };
 
   return (
@@ -54,6 +68,7 @@ export const Header = () => {
             <List>
               <ListItem>
                 <Link
+                  onClick={onHandleAboutMeClick}
                   spy={true}
                   smooth={true}
                   delay={100}
@@ -96,13 +111,18 @@ export const Header = () => {
           </Link>
 
           {isMobile && (
-            <IconButton onClick={handleMenuOpen}>
+            <IconButton onClick={onHandleMenuOpen}>
               <ListIcon fontSize={'large'} />
             </IconButton>
           )}
         </WrapperInner>
       </Layout>
-      {isOpen && <HeaderMobileMenu onHandleMenuOpen={handleMenuOpen} />}
+      {isOpen && (
+        <HeaderMobileMenu
+          onHandleAboutMeClick={onHandleAboutMeClick}
+          onHandleMenuOpen={onHandleMenuOpen}
+        />
+      )}
     </Wrapper>
   );
 };

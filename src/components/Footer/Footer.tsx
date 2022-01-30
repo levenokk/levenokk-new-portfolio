@@ -5,6 +5,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { Element } from 'react-scroll';
 
 import { ROUTES } from '../../constants';
 import { Work } from '../../graphql/generated/graphql';
@@ -113,36 +114,38 @@ export const Footer = ({ works }: Props) => {
               </FooterList>
             </Box>
             <Box>
-              <Typography
-                mb={'25px'}
-                textAlign={'left'}
-                fontSize={20}
-                variant={'h5'}
-              >
-                Контакты
-              </Typography>
-              <Box mb={'10px'} display={'flex'} alignItems={'center'}>
-                <Box mr={'9px'}>
-                  <MarkEmailUnreadIcon color={'primary'} />
+              <Element name={'contacts'}>
+                <Typography
+                  mb={'25px'}
+                  textAlign={'left'}
+                  fontSize={20}
+                  variant={'h5'}
+                >
+                  Контакты
+                </Typography>
+                <Box mb={'10px'} display={'flex'} alignItems={'center'}>
+                  <Box mr={'9px'}>
+                    <MarkEmailUnreadIcon color={'primary'} />
+                  </Box>
+                  <LinkStyled href='mailto:levenokk@gmail.com'>
+                    levenokk@gmail.com
+                  </LinkStyled>
                 </Box>
-                <LinkStyled href='mailto:levenokk@gmail.com'>
-                  levenokk@gmail.com
-                </LinkStyled>
-              </Box>
-              <Box mb={'10px'} display={'flex'} alignItems={'center'}>
-                <Box mr={'9px'}>
-                  <LocalPhoneIcon color={'primary'} />
+                <Box mb={'10px'} display={'flex'} alignItems={'center'}>
+                  <Box mr={'9px'}>
+                    <LocalPhoneIcon color={'primary'} />
+                  </Box>
+                  <LinkStyled href='tel:+38 (068) 083-64-70'>
+                    +38 (068) 083-64-70
+                  </LinkStyled>
                 </Box>
-                <LinkStyled href='tel:+38 (068) 083-64-70'>
-                  +38 (068) 083-64-70
-                </LinkStyled>
-              </Box>
-              <Box display={'flex'} alignItems={'center'}>
-                <Box mr={'9px'}>
-                  <RoomIcon color={'primary'} />
+                <Box display={'flex'} alignItems={'center'}>
+                  <Box mr={'9px'}>
+                    <RoomIcon color={'primary'} />
+                  </Box>
+                  <LinkStyled href={'#'}>Украина, Киев</LinkStyled>
                 </Box>
-                <LinkStyled href={'#'}>Украина, Киев</LinkStyled>
-              </Box>
+              </Element>
             </Box>
           </BottomWrapperInner>
         </Layout>
