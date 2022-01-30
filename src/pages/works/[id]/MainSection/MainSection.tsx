@@ -5,6 +5,7 @@ import { Divider, Link, Typography } from '@mui/material';
 import React from 'react';
 
 import { Layout } from '../../../../components';
+import { Work } from '../../../../graphql/generated/graphql';
 import { MainSectionSlider } from './MainSectionSlider';
 import {
   LeftItem,
@@ -20,7 +21,11 @@ import {
   WrapperTop,
 } from './styles';
 
-export const MainSection = () => {
+type Props = {
+  work: Work;
+};
+
+export const MainSection = ({ work }: Props) => {
   return (
     <Wrapper>
       <Layout>
@@ -37,14 +42,14 @@ export const MainSection = () => {
                 component={'span'}
                 color={'primary.main'}
               >
-                Н
+                {work?.name[0]}
               </Typography>
-              азвание проекта Максика
+              {work?.name?.slice(1)}
             </Typography>
             <LinkWrapper>
               <LanguageIcon color={'primary'} />
-              <Link ml={'5px'} href={'#'}>
-                https://material.io/design/material-studies/shrine.html#product-architecture
+              <Link ml={'5px'} href={work?.link}>
+                {work?.link}
               </Link>
             </LinkWrapper>
             <LinksWrapper>
@@ -59,7 +64,7 @@ export const MainSection = () => {
                   >
                     Заказчик:{' '}
                   </Typography>
-                  Евгений Сморыгин
+                  {work?.client_name}
                 </Typography>
               </LinkWrapper>
               <LinkWrapper>
@@ -73,24 +78,15 @@ export const MainSection = () => {
                   >
                     Срок выполнения:{' '}
                   </Typography>
-                  2 месяца
+                  {work?.time}
                 </Typography>
               </LinkWrapper>
             </LinksWrapper>
-            <Typography mb={'10px'} variant={'body1'}>
-              Разнообразный и богатый опыт постоянное информационно-
-              пропагандистское обеспечение нашей деятельности требуют от нас
-              анализа существенных финансовых и административных условий. Задача
-              организации, в особенности же консультация с широким активом
-              позволяет оценить значение систем массового участия.
-            </Typography>
-            <Typography mb={'10px'} variant={'body1'}>
-              Разнообразный и богатый опыт постоянное информационно-
-              пропагандистское обеспечение нашей деятельности требуют от нас
-              анализа существенных финансовых и административных условий. Задача
-              организации, в особенности же консультация с широким активом
-              позволяет оценить значение систем массового участия.
-            </Typography>
+            {work?.descriptions?.map(({ id, message }) => (
+              <Typography key={id} mb={'10px'} variant={'body1'}>
+                {message}
+              </Typography>
+            ))}
           </MainContent>
         </WrapperTop>
         <Divider />
@@ -106,34 +102,11 @@ export const MainSection = () => {
               Цель проекта
             </Typography>
             <List>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
+              {work?.targets?.map(({ id, message }) => (
+                <ListItem key={id}>
+                  <Typography>{message}</Typography>
+                </ListItem>
+              ))}
             </List>
           </LeftItem>
           <RightItem>
@@ -147,34 +120,11 @@ export const MainSection = () => {
               Выполненные задачи
             </Typography>
             <List>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных
-                </Typography>
-              </ListItem>
+              {work?.tasks?.map(({ id, message }) => (
+                <ListItem key={id}>
+                  <Typography>{message}</Typography>
+                </ListItem>
+              ))}
             </List>
           </RightItem>
         </WrapperBottom>

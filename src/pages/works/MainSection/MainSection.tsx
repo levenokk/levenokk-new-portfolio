@@ -1,10 +1,27 @@
-import { Box, Button, Typography } from '@mui/material';
-import React from 'react';
+import { LoadingButton as Button } from '@mui/lab';
+import { Box, Typography } from '@mui/material';
+import React, { useState } from 'react';
 
 import { Layout, ProjectCard } from '../../../components';
+import { Work } from '../../../graphql/generated/graphql';
+import { useGetWorksQuery } from '../../../hooks/queries';
 import { Projects, Wrapper } from './styles';
 
 export const MainSection = () => {
+  const [offset, setOffset] = useState(9);
+  const { data, loading, fetchMore } = useGetWorksQuery();
+
+  const handleLoadMore = async () => {
+    await fetchMore({
+      variables: {
+        offset,
+        limit: 9,
+      },
+    });
+
+    setOffset((prev) => prev + 9);
+  };
+
   return (
     <Layout>
       <Wrapper>
@@ -35,18 +52,21 @@ export const MainSection = () => {
           </Typography>
         </Box>
         <Projects>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {data?.getWorks?.rows?.map((work) => (
+            <ProjectCard work={work as Work} key={work.id} />
+          ))}
         </Projects>
         <Box width={300} mx={'auto'}>
-          <Button fullWidth variant={'contained'}>
+          <Button
+            loading={loading}
+            onClick={handleLoadMore}
+            disabled={
+              (data?.getWorks?.count || 0) <=
+              (data?.getWorks?.rows?.length || 0)
+            }
+            fullWidth
+            variant={'contained'}
+          >
             Показать больше
           </Button>
         </Box>

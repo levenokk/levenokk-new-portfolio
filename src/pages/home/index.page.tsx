@@ -2,11 +2,16 @@ import { useTheme } from '@mui/material';
 import Head from 'next/head';
 
 import { Footer, FormSection, Header, UpButton } from '../../components';
+import { Works as StaticPageType } from '../../graphql/generated/graphql';
 import { AboutSection } from './AboutSection/AboutSection';
 import { MainSection } from './MainSection/MainSection';
 import { PortfolioSection } from './PortfolioSection/PortfolioSection';
 
-export default function Home() {
+type Props = {
+  pageData: StaticPageType;
+};
+
+export default function Home({ pageData }: Props) {
   const theme = useTheme();
 
   const color = theme.palette.background.default;
@@ -19,9 +24,9 @@ export default function Home() {
       <Header />
       <MainSection />
       <AboutSection />
-      <PortfolioSection />
+      <PortfolioSection works={pageData?.rows} />
       <FormSection />
-      <Footer />
+      <Footer works={pageData?.rows} />
       <UpButton />
     </>
   );

@@ -12,7 +12,7 @@ export const Wrapper = styled(Box)<BoxProps>(({ theme }) => ({
 
 export const Projects = styled(Box)<BoxProps>(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
+  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
   columnGap: '28px',
   rowGap: '28px',
   marginBottom: 40,

@@ -1,4 +1,1 @@
-export const COLORS = {
-  light: {},
-  dark: {},
-};
+export const API_HOST = 'http://localhost:8000/graphql';

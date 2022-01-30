@@ -64,6 +64,7 @@ export const Link = styled('a')(({ theme }) => ({
   fontWeight: 300,
   textDecoration: 'none',
   fontFamily: 'Rubik, sans-serif',
+  cursor: 'pointer',
   '&:hover': {
     color: theme.palette.primary.main,
   },

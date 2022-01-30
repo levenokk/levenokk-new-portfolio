@@ -7,6 +7,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { ROUTES } from '../../constants';
+import { Work } from '../../graphql/generated/graphql';
 import { FacebookIcon, GitHubIcon, InstagramIcon } from '../icons';
 import { Layout } from '../Layout/Layout';
 import {
@@ -22,7 +23,11 @@ import {
   TopWrapperInner,
 } from './styles';
 
-export const Footer = () => {
+type Props = {
+  works: Work[];
+};
+
+export const Footer = ({ works }: Props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
 
@@ -98,29 +103,15 @@ export const Footer = () => {
                 Портфолио
               </Typography>
               <FooterList>
-                <ListItem>
-                  <Link href={'#'}>
-                    <LinkStyled>Название проекта 1</LinkStyled>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link href={'#'}>
-                    <LinkStyled>Название проекта 2</LinkStyled>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link href={'#'}>
-                    <LinkStyled>Название проекта 3</LinkStyled>
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link href={'#'}>
-                    <LinkStyled>Название проекта 4</LinkStyled>
-                  </Link>
-                </ListItem>
+                {works?.map((work) => (
+                  <ListItem key={work.id}>
+                    <Link href={ROUTES.works + '/' + work?.id}>
+                      <LinkStyled>{work.name}</LinkStyled>
+                    </Link>
+                  </ListItem>
+                ))}
               </FooterList>
             </Box>
-
             <Box>
               <Typography
                 mb={'25px'}

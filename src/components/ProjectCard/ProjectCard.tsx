@@ -1,10 +1,11 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import tempImage from '../../../public/images/temp.png';
 import { ROUTES } from '../../constants';
+import { Work } from '../../graphql/generated/graphql';
 import {
   Button,
   ButtonWrapper,
@@ -15,7 +16,11 @@ import {
   Link as LinkStyled,
 } from './styles';
 
-export const ProjectCard = () => {
+type Props = {
+  work: Work;
+};
+
+export const ProjectCard = memo(({ work }: Props) => {
   const [isShowDescription, setDescription] = useState(false);
 
   const handleOpen = () => {
@@ -24,15 +29,13 @@ export const ProjectCard = () => {
 
   return (
     <article>
-      <Link href={ROUTES.works + '/1'}>
+      <Link href={ROUTES.works + '/' + work?.id}>
         <a>
           <ImageWrapper position={'relative'}>
             <Description isActive={isShowDescription}>
               <DescriptionWrapper>
                 <Typography color={'common.white'} variant={'body1'}>
-                  Разнообразный и богатый опыт постоянное информационно-
-                  пропагандистское обеспечение нашей деятельности требуют от нас
-                  анализа существенных финансовых и административных условий
+                  {work?.short_description}
                 </Typography>
               </DescriptionWrapper>
             </Description>
@@ -55,13 +58,15 @@ export const ProjectCard = () => {
           <ChevronRightIcon fontSize={'large'} />
         </Button>
       </ButtonWrapper>
-      <Link href={ROUTES.works + '/1'}>
+      <Link href={ROUTES.works + '/' + work?.id}>
         <LinkStyled>
-          <Typography variant={'h5'}>
-            Проект Максика с названием большим
+          <Typography noWrap variant={'h5'}>
+            {work?.name}
           </Typography>
         </LinkStyled>
       </Link>
     </article>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';

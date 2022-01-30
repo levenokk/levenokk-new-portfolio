@@ -34,7 +34,7 @@ export const MainSection = () => {
               >
                 C
               </Typography>
-              reate sites and apps in minutes
+              оздание сайтов и приложений
             </Typography>
             <Typography mb={'32px'} color={'grey.400'} variant={'body1'}>
               Максик - лучший веб-разработчик и по жизни красавчик) Становитесь

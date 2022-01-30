@@ -5,9 +5,14 @@ import { Element } from 'react-scroll';
 
 import { Layout, ProjectCard } from '../../../components';
 import { ROUTES } from '../../../constants';
+import { Work } from '../../../graphql/generated/graphql';
 import { Icon, Projects, Wrapper } from './styles';
 
-export const PortfolioSection = () => {
+type Props = {
+  works: Work[];
+};
+
+export const PortfolioSection = ({ works }: Props) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -41,9 +46,9 @@ export const PortfolioSection = () => {
             Тут собраны все мои работы за последнее время
           </Typography>
           <Projects>
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            {works?.map((work) => (
+              <ProjectCard work={work} key={work.id} />
+            ))}
           </Projects>
           <Box width={300} mx={'auto'}>
             <Button
