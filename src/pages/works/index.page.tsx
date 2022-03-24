@@ -22,7 +22,7 @@ export default function Works({ pageData }: Props) {
         <title>Максим Строило - web разработчик | работы</title>
       </Head>
       <Header />
-      <MainSection />
+      <MainSection count={pageData.count} works={pageData.rows} />
       <FormSection isBackground />
       <Footer works={pageData?.rows.slice(0, 3)} />
       <UpButton />

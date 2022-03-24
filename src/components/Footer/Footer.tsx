@@ -25,7 +25,7 @@ import {
 } from './styles';
 
 type Props = {
-  works: Work[];
+  works?: Work[];
 };
 
 export const Footer = ({ works }: Props) => {

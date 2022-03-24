@@ -9,7 +9,7 @@ import { Work } from '../../../../graphql/generated/graphql';
 import { Icon, Projects, Wrapper } from './styles';
 
 type Props = {
-  works: Work[];
+  works?: Work[];
 };
 
 export const SimilarWorksSection = ({ works }: Props) => {

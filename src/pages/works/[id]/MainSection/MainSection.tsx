@@ -22,7 +22,7 @@ import {
 } from './styles';
 
 type Props = {
-  work: Work;
+  work?: Work;
 };
 
 export const MainSection = ({ work }: Props) => {

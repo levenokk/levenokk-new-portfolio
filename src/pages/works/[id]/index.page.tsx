@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 import React from 'react';
 
 import { Footer, FormSection, Header, UpButton } from '../../../components';
@@ -8,6 +8,7 @@ import {
   GetWorkQueryVariables,
   GetWorksQuery,
   GetWorksQueryVariables,
+  Work as WorkType,
   Works,
 } from '../../../graphql/generated/graphql';
 import { GET_WORK } from '../../../graphql/queries/getWork.gql';
@@ -16,68 +17,59 @@ import { MainSection } from './MainSection/MainSection';
 import { SimilarWorksSection } from './SimilarWorksSection/SimilarWorksSection';
 
 type Props = {
-  works: Works;
-  work: GetWorkQuery;
+  works: Works | null;
+  work: GetWorkQuery | null;
+  notFound: boolean;
 };
 
-export default function Work({ works, work }: Props) {
+export default function Work({ works, work, notFound }: Props) {
+  if (notFound) {
+    return <div>404</div>;
+  }
+
   return (
     <>
       <Header />
-      <MainSection work={work.getWork as any} />
-      <SimilarWorksSection works={works.rows} />
+      <MainSection work={work?.getWork as WorkType} />
+      <SimilarWorksSection works={works?.rows.slice(0, 3)} />
       <FormSection />
-      <Footer works={works.rows} />
+      <Footer works={works?.rows.slice(0, 3)} />
       <UpButton />
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const works = await client.query<GetWorksQuery, GetWorksQueryVariables>({
-    query: GET_WORKS,
-    variables: {
-      offset: 0,
-      limit: 3,
-    },
-  });
+export const getServerSideProps: GetStaticProps = async ({ params }) => {
+  try {
+    const works = await client.query<GetWorksQuery, GetWorksQueryVariables>({
+      query: GET_WORKS,
+      variables: {
+        offset: 0,
+        limit: 3,
+      },
+    });
 
-  const work = await client.query<GetWorkQuery, GetWorkQueryVariables>({
-    query: GET_WORK,
-    variables: {
-      id: params?.id as string,
-    },
-  });
+    const work = await client.query<GetWorkQuery, GetWorkQueryVariables>({
+      query: GET_WORK,
+      variables: {
+        id: params?.id as string,
+      },
+    });
 
-  if (!work) {
     return {
-      notFound: true,
+      props: {
+        works: works?.data?.getWorks,
+        work: work?.data,
+        notFound: !work,
+      },
+    };
+  } catch {
+    return {
+      props: {
+        works: null,
+        work: null,
+        notFound: true,
+      },
     };
   }
-
-  return {
-    props: {
-      works: works.data.getWorks,
-      work: work.data,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const pageData = await client.query<GetWorksQuery, GetWorksQueryVariables>({
-    query: GET_WORKS,
-    variables: {
-      offset: 0,
-      limit: 10000,
-    },
-  });
-
-  const paths = pageData.data.getWorks.rows.map((work) => ({
-    params: { id: work.id },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
 };

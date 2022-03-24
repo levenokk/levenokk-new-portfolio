@@ -1,26 +1,34 @@
 import { LoadingButton as Button } from '@mui/lab';
 import { Box, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Layout, ProjectCard } from '../../../components';
 import { Work } from '../../../graphql/generated/graphql';
-import { useGetWorksQuery } from '../../../hooks/queries';
+import { useGetWorksLazyQuery } from '../../../hooks/queries';
 import { Projects, Wrapper } from './styles';
 
-export const MainSection = () => {
-  const { data, loading, fetchMore } = useGetWorksQuery();
+type Props = {
+  works: Work[];
+  count: number;
+};
 
-  const [offset, setOffset] = useState(9);
+export const MainSection = ({ works, count }: Props) => {
+  const [data, setData] = useState(works);
+  const [getWorks, { loading }] = useGetWorksLazyQuery();
+
+  const offset = useRef(9);
 
   const handleLoadMore = async () => {
-    await fetchMore({
+    const { data } = await getWorks({
       variables: {
-        offset,
+        offset: offset.current,
         limit: 9,
       },
     });
 
-    setOffset((prev) => prev + 9);
+    setData((prev) => [...prev, ...(data?.getWorks?.rows as Work[])]);
+
+    offset.current += 9;
   };
 
   return (
@@ -53,7 +61,7 @@ export const MainSection = () => {
           </Typography>
         </Box>
         <Projects>
-          {data?.getWorks?.rows?.map((work) => (
+          {data?.map((work) => (
             <ProjectCard work={work as Work} key={work.id} />
           ))}
         </Projects>
@@ -61,10 +69,7 @@ export const MainSection = () => {
           <Button
             loading={loading}
             onClick={handleLoadMore}
-            disabled={
-              (data?.getWorks?.count || 0) <=
-              (data?.getWorks?.rows?.length || 0)
-            }
+            disabled={(count || 0) <= (data?.length || 0)}
             fullWidth
             variant={'contained'}
           >

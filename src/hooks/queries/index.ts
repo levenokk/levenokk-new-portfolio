@@ -1,1 +1,1 @@
-export * from './useGetWorksQuery';
+export * from './useGetWorksLazyQuery';
