@@ -8,8 +8,9 @@ import { useGetWorksQuery } from '../../../hooks/queries';
 import { Projects, Wrapper } from './styles';
 
 export const MainSection = () => {
-  const [offset, setOffset] = useState(9);
   const { data, loading, fetchMore } = useGetWorksQuery();
+
+  const [offset, setOffset] = useState(9);
 
   const handleLoadMore = async () => {
     await fetchMore({
