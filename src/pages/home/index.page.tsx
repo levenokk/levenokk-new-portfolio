@@ -5,16 +5,20 @@ import { useEffect } from 'react';
 import { animateScroll } from 'react-scroll';
 
 import { Footer, FormSection, Header, UpButton } from '../../components';
-import { Works as StaticPageType } from '../../graphql/generated/graphql';
+import {
+  ResumeEntityResponse,
+  WorkEntityResponseCollection,
+} from '../../graphql/generated/graphql';
 import { AboutSection } from './AboutSection/AboutSection';
 import { MainSection } from './MainSection/MainSection';
 import { PortfolioSection } from './PortfolioSection/PortfolioSection';
 
 type Props = {
-  pageData: StaticPageType;
+  pageData: WorkEntityResponseCollection;
+  resumeData: ResumeEntityResponse;
 };
 
-export default function Home({ pageData }: Props) {
+export default function Home({ pageData, resumeData }: Props) {
   const theme = useTheme();
   const router = useRouter();
 
@@ -36,10 +40,10 @@ export default function Home({ pageData }: Props) {
       </Head>
       <Header />
       <MainSection />
-      <AboutSection />
-      <PortfolioSection works={pageData?.rows} />
+      <AboutSection resumeData={resumeData} />
+      <PortfolioSection works={pageData?.data} />
       <FormSection />
-      <Footer works={pageData?.rows} />
+      <Footer resumeData={resumeData} works={pageData?.data?.slice(0, 3)} />
       <UpButton />
     </>
   );

@@ -1,3 +1,4 @@
+export * from './Alert/Alert';
 export * from './Footer/Footer';
 export * from './FormSection/FormSection';
 export * from './Header/Header';

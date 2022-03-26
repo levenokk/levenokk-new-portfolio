@@ -8,7 +8,10 @@ import React from 'react';
 import { Element } from 'react-scroll';
 
 import { ROUTES } from '../../constants';
-import { Work } from '../../graphql/generated/graphql';
+import {
+  ResumeEntityResponse,
+  WorkEntity,
+} from '../../graphql/generated/graphql';
 import { FacebookIcon, GitHubIcon, InstagramIcon } from '../icons';
 import { Layout } from '../Layout/Layout';
 import {
@@ -25,10 +28,11 @@ import {
 } from './styles';
 
 type Props = {
-  works?: Work[];
+  works?: WorkEntity[];
+  resumeData: ResumeEntityResponse;
 };
 
-export const Footer = ({ works }: Props) => {
+export const Footer = ({ works, resumeData }: Props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('laptop'));
 
@@ -72,7 +76,7 @@ export const Footer = ({ works }: Props) => {
                 fontSize={20}
                 variant={'h5'}
               >
-                Чем я занимаюсь?
+                Мотивация
               </Typography>
               <Typography color={'grey.400'} variant={'body1'}>
                 Разрабатываю сайты и мобильные приложения. А так же делаю
@@ -90,7 +94,7 @@ export const Footer = ({ works }: Props) => {
                 Обо мне
               </Typography>
               <Typography color={'grey.400'} variant={'body1'}>
-                Описание Навыки
+                {resumeData?.data?.attributes?.skils}
               </Typography>
             </Box>
 
@@ -107,7 +111,7 @@ export const Footer = ({ works }: Props) => {
                 {works?.map((work) => (
                   <ListItem key={work.id}>
                     <Link href={ROUTES.works + '/' + work?.id}>
-                      <LinkStyled>{work.name}</LinkStyled>
+                      <LinkStyled>{work.attributes?.title}</LinkStyled>
                     </Link>
                   </ListItem>
                 ))}
@@ -127,16 +131,26 @@ export const Footer = ({ works }: Props) => {
                   <Box mr={'9px'}>
                     <MarkEmailUnreadIcon color={'primary'} />
                   </Box>
-                  <LinkStyled href='mailto:levenokk@gmail.com'>
-                    levenokk@gmail.com
+                  <LinkStyled
+                    href={`mailto:${
+                      resumeData?.data?.attributes?.email ||
+                      'levenokk@gmail.com'
+                    }`}
+                  >
+                    {resumeData?.data?.attributes?.email}
                   </LinkStyled>
                 </Box>
                 <Box mb={'10px'} display={'flex'} alignItems={'center'}>
                   <Box mr={'9px'}>
                     <LocalPhoneIcon color={'primary'} />
                   </Box>
-                  <LinkStyled href='tel:+38 (068) 083-64-70'>
-                    +38 (068) 083-64-70
+                  <LinkStyled
+                    href={`tel:${
+                      resumeData?.data?.attributes?.phone ||
+                      '+38 (068) 083-64-70'
+                    }`}
+                  >
+                    {resumeData?.data?.attributes?.phone}
                   </LinkStyled>
                 </Box>
                 <Box display={'flex'} alignItems={'center'}>
@@ -156,7 +170,7 @@ export const Footer = ({ works }: Props) => {
           variant={'body2'}
           textAlign={'center'}
         >
-          Levenokk 2021 © Все права защищены
+          Levenokk 2021-{new Date().getFullYear()} © Все права защищены
         </Typography>
       </FooterBottom>
     </footer>

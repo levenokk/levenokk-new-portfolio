@@ -5,7 +5,7 @@ import { Divider, Link, Typography } from '@mui/material';
 import React from 'react';
 
 import { Layout } from '../../../../components';
-import { Work } from '../../../../graphql/generated/graphql';
+import { Maybe, WorkEntity } from '../../../../graphql/generated/graphql';
 import { MainSectionSlider } from './MainSectionSlider';
 import {
   LeftItem,
@@ -22,7 +22,7 @@ import {
 } from './styles';
 
 type Props = {
-  work?: Work;
+  work?: Maybe<WorkEntity>;
 };
 
 export const MainSection = ({ work }: Props) => {
@@ -31,7 +31,7 @@ export const MainSection = ({ work }: Props) => {
       <Layout>
         <WrapperTop>
           <SliderWrapper>
-            <MainSectionSlider />
+            <MainSectionSlider images={work?.attributes?.images?.data} />
           </SliderWrapper>
           <MainContent>
             <Typography mb={'15px'} component={'h1'} variant={'h2'}>
@@ -42,14 +42,14 @@ export const MainSection = ({ work }: Props) => {
                 component={'span'}
                 color={'primary.main'}
               >
-                {work?.name[0]}
+                {work?.attributes?.title[0]}
               </Typography>
-              {work?.name?.slice(1)}
+              {work?.attributes?.title?.slice(1)}
             </Typography>
             <LinkWrapper>
               <LanguageIcon color={'primary'} />
-              <Link ml={'5px'} href={work?.link}>
-                {work?.link}
+              <Link ml={'5px'} href={work?.attributes?.link || '#'}>
+                {work?.attributes?.link}
               </Link>
             </LinkWrapper>
             <LinksWrapper>
@@ -64,7 +64,7 @@ export const MainSection = ({ work }: Props) => {
                   >
                     Заказчик:{' '}
                   </Typography>
-                  {work?.client_name}
+                  {work?.attributes?.client_name}
                 </Typography>
               </LinkWrapper>
               <LinkWrapper>
@@ -78,13 +78,13 @@ export const MainSection = ({ work }: Props) => {
                   >
                     Срок выполнения:{' '}
                   </Typography>
-                  {work?.time}
+                  {work?.attributes?.date_end}
                 </Typography>
               </LinkWrapper>
             </LinksWrapper>
-            {work?.descriptions?.map(({ id, message }) => (
-              <Typography key={id} mb={'10px'} variant={'body1'}>
-                {message}
+            {work?.attributes?.descriptions?.map((description) => (
+              <Typography key={description?.id} mb={'10px'} variant={'body1'}>
+                {description?.text}
               </Typography>
             ))}
           </MainContent>
@@ -102,9 +102,9 @@ export const MainSection = ({ work }: Props) => {
               Цель проекта
             </Typography>
             <List>
-              {work?.targets?.map(({ id, message }) => (
-                <ListItem key={id}>
-                  <Typography>{message}</Typography>
+              {work?.attributes?.targets?.map((target) => (
+                <ListItem key={target?.id}>
+                  <Typography>{target?.text}</Typography>
                 </ListItem>
               ))}
             </List>
@@ -120,9 +120,9 @@ export const MainSection = ({ work }: Props) => {
               Выполненные задачи
             </Typography>
             <List>
-              {work?.tasks?.map(({ id, message }) => (
-                <ListItem key={id}>
-                  <Typography>{message}</Typography>
+              {work?.attributes?.executed_tasks?.map((executed_task) => (
+                <ListItem key={executed_task?.id}>
+                  <Typography>{executed_task?.text}</Typography>
                 </ListItem>
               ))}
             </List>

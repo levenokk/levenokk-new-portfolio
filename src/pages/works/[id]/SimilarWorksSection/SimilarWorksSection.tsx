@@ -5,11 +5,11 @@ import { Element } from 'react-scroll';
 
 import { Layout, ProjectCard } from '../../../../components';
 import { ROUTES } from '../../../../constants';
-import { Work } from '../../../../graphql/generated/graphql';
+import { WorkEntity } from '../../../../graphql/generated/graphql';
 import { Icon, Projects, Wrapper } from './styles';
 
 type Props = {
-  works?: Work[];
+  works?: WorkEntity[];
 };
 
 export const SimilarWorksSection = ({ works }: Props) => {
@@ -35,14 +35,18 @@ export const SimilarWorksSection = ({ works }: Props) => {
             >
               П
             </Typography>
-            охожие работы
+            осмотрите другие работы
           </Typography>
           <Typography mb={'45px'} variant={'body1'} textAlign={'center'}>
             Тут собраны все мои работы за последнее время
           </Typography>
           <Projects>
             {works?.map((work) => (
-              <ProjectCard work={work} key={work.id} />
+              <ProjectCard
+                work={work?.attributes}
+                id={work?.id}
+                key={work?.id}
+              />
             ))}
           </Projects>
           <Box width={300} mx={'auto'}>

@@ -1,7 +1,8 @@
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
+import { LoadingButton as Button } from '@mui/lab';
 import {
   Box,
-  Button,
+  Snackbar,
   Typography,
   useMediaQuery,
   useTheme,
@@ -12,18 +13,57 @@ import React from 'react';
 import { Element } from 'react-scroll';
 
 import formImage from '../../../public/images/form.svg';
-import { Layout, TextField } from '../index';
+import { useSendMessageMutation } from '../../hooks/mutations';
+import { requestSchema } from '../../validations';
+import { Alert, Layout, TextField } from '../index';
 import { Content, FormWrapper, ImageWrapper, Wrapper } from './styles';
 
 type Props = {
   isBackground?: boolean;
 };
 
+type FormikValues = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
-  const handleFormSubmit = () => {};
+  const [sendMessage, { loading, error }] = useSendMessageMutation();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const handleFormSubmit = ({ message, email, name }: FormikValues) => {
+    sendMessage({
+      variables: {
+        data: {
+          message,
+          name,
+          email,
+        },
+      },
+    })
+      .then(() => {
+        setOpen(true);
+      })
+      .catch(() => {
+        setOpen(true);
+      });
+  };
 
   return (
     <Element name={'form'}>
@@ -50,11 +90,19 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
                 Оставь свое сообщение и я обязательно отвечу Вам в ближайшее
                 время
               </Typography>
-              <Formik onSubmit={handleFormSubmit} initialValues={{}}>
-                {({ handleSubmit }) => (
+              <Formik
+                onSubmit={handleFormSubmit}
+                initialValues={{
+                  name: '',
+                  email: '',
+                  message: '',
+                }}
+                validationSchema={requestSchema}
+              >
+                {({ handleSubmit, dirty, isValid }) => (
                   <FormWrapper>
                     <TextField name={'name'} label={'Ваше имя'} />
-                    <TextField name={'email'} label={'Ваше имя'} />
+                    <TextField name={'email'} label={'Ваш email'} />
                     <TextField
                       multiline
                       rows={4}
@@ -63,6 +111,8 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
                     />
                     <Box maxWidth={isMobile ? '100%' : '240px'} mt={'34px'}>
                       <Button
+                        loading={loading}
+                        disabled={!isValid || !dirty}
                         startIcon={<MarkEmailUnreadIcon />}
                         fullWidth
                         variant={'contained'}
@@ -78,6 +128,21 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
           </Wrapper>
         </Layout>
       </Box>
+
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={error ? 'error' : 'success'}
+          sx={{ width: '400px' }}
+        >
+          {error ? 'something went wrong' : 'This is a success message!'}
+        </Alert>
+      </Snackbar>
     </Element>
   );
 };

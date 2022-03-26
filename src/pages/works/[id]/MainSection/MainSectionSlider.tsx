@@ -7,8 +7,14 @@ import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import TempImage from '../../../../../public/images/temp.png';
+import { API_URL } from '../../../../constants';
+import { UploadFileEntity } from '../../../../graphql/generated/graphql';
 
-export const MainSectionSlider = () => {
+type Props = {
+  images?: UploadFileEntity[];
+};
+
+export const MainSectionSlider = ({ images }: Props) => {
   return (
     <Swiper
       pagination={{ clickable: true }}
@@ -22,46 +28,18 @@ export const MainSectionSlider = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide>
-        <Image
-          alt={''}
-          src={TempImage}
-          layout={'responsive'}
-          objectFit={'cover'}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          alt={''}
-          src={TempImage}
-          layout={'responsive'}
-          objectFit={'cover'}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          alt={''}
-          src={TempImage}
-          layout={'responsive'}
-          objectFit={'cover'}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          alt={''}
-          src={TempImage}
-          layout={'responsive'}
-          objectFit={'cover'}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Image
-          alt={''}
-          src={TempImage}
-          layout={'responsive'}
-          objectFit={'cover'}
-        />
-      </SwiperSlide>
+      {images?.map((image) => (
+        <SwiperSlide key={image.id}>
+          <Image
+            width={image?.attributes?.width || 0}
+            height={image?.attributes?.height || 0}
+            alt={image?.attributes?.name}
+            src={API_URL + image?.attributes?.url || TempImage}
+            layout={'responsive'}
+            objectFit={'cover'}
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

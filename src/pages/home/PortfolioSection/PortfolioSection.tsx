@@ -5,11 +5,11 @@ import { Element } from 'react-scroll';
 
 import { Layout, ProjectCard } from '../../../components';
 import { ROUTES } from '../../../constants';
-import { Work } from '../../../graphql/generated/graphql';
+import { WorkEntity } from '../../../graphql/generated/graphql';
 import { Icon, Projects, Wrapper } from './styles';
 
 type Props = {
-  works: Work[];
+  works: WorkEntity[];
 };
 
 export const PortfolioSection = ({ works }: Props) => {
@@ -47,7 +47,7 @@ export const PortfolioSection = ({ works }: Props) => {
           </Typography>
           <Projects>
             {works?.map((work) => (
-              <ProjectCard work={work} key={work.id} />
+              <ProjectCard id={work.id} work={work.attributes} key={work.id} />
             ))}
           </Projects>
           <Box width={300} mx={'auto'}>

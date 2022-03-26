@@ -18,7 +18,7 @@ export const TextField: React.FC<Props> = ({
   rows,
 }) => {
   const { handleChange, handleBlur, getFieldMeta } = useFormikContext();
-  const { value, error } = getFieldMeta(name);
+  const { value, error, touched } = getFieldMeta(name);
 
   const inputProps: TextFieldProps = {
     onChange: handleChange,
@@ -26,8 +26,8 @@ export const TextField: React.FC<Props> = ({
     name,
     onBlur: handleBlur,
     value,
-    error: Boolean(error),
-    helperText: error,
+    error: Boolean(touched && error),
+    helperText: touched && error,
     multiline,
     rows,
   };

@@ -1,11 +1,10 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Link from 'next/link';
 import React, { memo, useState } from 'react';
 
-import tempImage from '../../../public/images/temp.png';
-import { ROUTES } from '../../constants';
-import { Work } from '../../graphql/generated/graphql';
+import { API_URL, ROUTES } from '../../constants';
+import { Maybe, Work } from '../../graphql/generated/graphql';
 import {
   Button,
   ButtonWrapper,
@@ -17,10 +16,11 @@ import {
 } from './styles';
 
 type Props = {
-  work: Work;
+  work?: Maybe<Work>;
+  id?: string | null;
 };
 
-export const ProjectCard = memo(({ work }: Props) => {
+export const ProjectCard = memo(({ work, id }: Props) => {
   const [isShowDescription, setDescription] = useState(false);
 
   const handleOpen = () => {
@@ -29,7 +29,7 @@ export const ProjectCard = memo(({ work }: Props) => {
 
   return (
     <article>
-      <Link href={ROUTES.works + '/' + work?.id}>
+      <Link href={ROUTES.works + '/' + id}>
         <a>
           <ImageWrapper position={'relative'}>
             <Description isActive={isShowDescription}>
@@ -40,8 +40,8 @@ export const ProjectCard = memo(({ work }: Props) => {
               </DescriptionWrapper>
             </Description>
             <Image
-              alt={''}
-              src={tempImage}
+              alt={work?.poster?.data?.attributes?.name}
+              src={API_URL + work?.poster?.data?.attributes?.url}
               layout={'fill'}
               objectFit={'cover'}
               objectPosition={'center'}
@@ -58,10 +58,10 @@ export const ProjectCard = memo(({ work }: Props) => {
           <ChevronRightIcon fontSize={'large'} />
         </Button>
       </ButtonWrapper>
-      <Link href={ROUTES.works + '/' + work?.id}>
+      <Link href={ROUTES.works + '/' + id}>
         <LinkStyled>
           <Typography noWrap variant={'h5'}>
-            {work?.name}
+            {work?.title}
           </Typography>
         </LinkStyled>
       </Link>

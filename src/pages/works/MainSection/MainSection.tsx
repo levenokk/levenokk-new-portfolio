@@ -3,17 +3,16 @@ import { Box, Typography } from '@mui/material';
 import React, { useRef, useState } from 'react';
 
 import { Layout, ProjectCard } from '../../../components';
-import { Work } from '../../../graphql/generated/graphql';
+import { WorkEntity } from '../../../graphql/generated/graphql';
 import { useGetWorksLazyQuery } from '../../../hooks/queries';
 import { Projects, Wrapper } from './styles';
 
 type Props = {
-  works: Work[];
-  count: number;
+  works?: WorkEntity[];
 };
 
-export const MainSection = ({ works, count }: Props) => {
-  const [data, setData] = useState(works);
+export const MainSection = ({ works }: Props) => {
+  const [data, setData] = useState<WorkEntity[]>(works || []);
   const [getWorks, { loading }] = useGetWorksLazyQuery();
 
   const offset = useRef(9);
@@ -21,12 +20,18 @@ export const MainSection = ({ works, count }: Props) => {
   const handleLoadMore = async () => {
     const { data } = await getWorks({
       variables: {
-        offset: offset.current,
-        limit: 9,
+        pagination: {
+          start: offset.current,
+          limit: 9,
+        },
       },
     });
 
-    setData((prev) => [...prev, ...(data?.getWorks?.rows as Work[])]);
+    if (Array.isArray(data?.works?.data)) {
+      const works = data?.works?.data as WorkEntity[];
+
+      setData((prev) => [...prev, ...works]);
+    }
 
     offset.current += 9;
   };
@@ -62,14 +67,14 @@ export const MainSection = ({ works, count }: Props) => {
         </Box>
         <Projects>
           {data?.map((work) => (
-            <ProjectCard work={work as Work} key={work.id} />
+            <ProjectCard work={work.attributes} id={work.id} key={work.id} />
           ))}
         </Projects>
         <Box width={300} mx={'auto'}>
           <Button
             loading={loading}
             onClick={handleLoadMore}
-            disabled={(count || 0) <= (data?.length || 0)}
+            disabled={(10 || 0) <= (data?.length || 0)}
             fullWidth
             variant={'contained'}
           >

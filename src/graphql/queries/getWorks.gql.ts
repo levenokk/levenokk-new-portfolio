@@ -1,30 +1,55 @@
 import { gql } from '@apollo/client';
 
 export const GET_WORKS = gql`
-  query getWorks($offset: Int, $limit: Int) {
-    getWorks(data: { offset: $offset, limit: $limit }) {
-      count
-      rows {
+  query getWorks(
+    $filters: WorkFiltersInput
+    $pagination: PaginationArg = {}
+    $publicationState: PublicationState = LIVE
+    $locale: I18NLocaleCode
+  ) {
+    works(
+      filters: $filters
+      pagination: $pagination
+      publicationState: $publicationState
+      locale: $locale
+    ) {
+      data {
         id
-        name
-        link
-        client_name
-        short_description
-        targets {
-          id
-          message
-        }
-        tasks {
-          id
-          message
-        }
-        images {
-          id
-          url
-        }
-        descriptions {
-          id
-          message
+        attributes {
+          title
+          link
+          short_description
+          client_name
+          date_start
+          date_end
+          targets {
+            id
+            text
+          }
+          descriptions {
+            id
+            text
+          }
+          executed_tasks {
+            id
+            text
+          }
+          images {
+            data {
+              id
+              attributes {
+                url
+              }
+            }
+          }
+          poster {
+            data {
+              id
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }

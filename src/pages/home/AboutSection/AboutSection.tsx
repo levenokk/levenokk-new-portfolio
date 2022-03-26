@@ -17,6 +17,8 @@ import {
   GitHubIcon,
   InstagramIcon,
 } from '../../../components/icons';
+import { API_URL } from '../../../constants';
+import { ResumeEntityResponse } from '../../../graphql/generated/graphql';
 import {
   Content,
   ContentWrapper,
@@ -28,7 +30,11 @@ import {
   Wrapper,
 } from './styles';
 
-export const AboutSection = () => {
+type Props = {
+  resumeData: ResumeEntityResponse;
+};
+
+export const AboutSection = ({ resumeData }: Props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('mobile'));
 
@@ -44,16 +50,34 @@ export const AboutSection = () => {
               component={'span'}
               color={'primary.main'}
             >
-              К
+              {resumeData?.data?.attributes?.title[0]}
             </Typography>
-            то я?
+            {resumeData?.data?.attributes?.title?.slice(1)}
           </Typography>
           <Typography color={'grey.400'} variant={'body1'}>
-            Основная информация обо мне и чем я занимаюсь
+            {resumeData?.data?.attributes?.sub_title}
           </Typography>
           <ContentWrapper>
             <ImageWrapper>
-              <Image alt={''} src={meImage} layout={'responsive'} />
+              <Image
+                width={
+                  resumeData?.data?.attributes?.image?.data?.attributes
+                    ?.width || 0
+                }
+                height={
+                  resumeData?.data?.attributes?.image?.data?.attributes
+                    ?.height || 0
+                }
+                alt={
+                  resumeData?.data?.attributes?.image?.data?.attributes?.name
+                }
+                src={
+                  API_URL +
+                    resumeData?.data?.attributes?.image?.data?.attributes
+                      ?.url || meImage
+                }
+                layout={'responsive'}
+              />
             </ImageWrapper>
             <Content>
               <Typography variant={'h3'} mb={'16px'}>
@@ -64,16 +88,15 @@ export const AboutSection = () => {
                   component={'span'}
                   color={'#B7FF7F'}
                 >
-                  Привет,
+                  {resumeData?.data?.attributes?.name?.split(' ')[0]}
                 </Typography>{' '}
-                меня зовут Максим!
+                {resumeData?.data?.attributes?.name
+                  ?.split(' ')
+                  ?.slice(1)
+                  ?.join(' ')}
               </Typography>
               <Typography mb={'16px'} variant={'body2'}>
-                Разнообразный и богатый опыт постоянное информационно-
-                пропагандистское обеспечение нашей деятельности требуют от нас
-                анализа существенных финансовых и административных условий.
-                Задача организации, в особенности же консультация с широким
-                активом позволяет оценить значение систем массового участия.
+                {resumeData?.data?.attributes?.description}
               </Typography>
               <Typography variant={'body2'}>
                 <Typography
@@ -82,10 +105,9 @@ export const AboutSection = () => {
                   fontSize={'inherit'}
                   component={'strong'}
                 >
-                  Вот что я знаю:
+                  {resumeData?.data?.attributes?.my_skils_title}
                 </Typography>{' '}
-                JavaScript, jquery, react, vue, next, nuxt, nest, express,
-                nodeJs, mongoDb, fireBase, wordpress, mysql
+                {resumeData?.data?.attributes?.skils}
               </Typography>
               <Element name={'contacts'}>
                 <Grid>
@@ -99,11 +121,14 @@ export const AboutSection = () => {
                       Моя почта:
                     </Typography>{' '}
                     <Link
-                      href='mailto:levenokk@gmail.com'
+                      href={`mailto:${
+                        resumeData?.data?.attributes?.email ||
+                        'levenokk@gmail.com'
+                      }`}
                       target={'_blank'}
                       rel='noreferrer'
                     >
-                      levenokk@gmail.com
+                      {resumeData?.data?.attributes?.email}
                     </Link>
                   </Typography>
                   <Box flexWrap={'wrap'} display={'flex'}>
@@ -139,14 +164,25 @@ export const AboutSection = () => {
                     >
                       Мой телефон:
                     </Typography>{' '}
-                    <Link href='tel:+38 (068) 083-64-70'>
-                      +38 (068) 083-64-70
+                    <Link
+                      href={`tel:${
+                        resumeData?.data?.attributes?.phone ||
+                        '+38 (068) 083-64-70'
+                      } `}
+                    >
+                      {resumeData?.data?.attributes?.phone}
                     </Link>
                   </Typography>
                 </Grid>
               </Element>
 
               <Button
+                href={
+                  API_URL +
+                    resumeData?.data?.attributes?.file?.data?.attributes?.url ||
+                  '#'
+                }
+                download
                 fullWidth={isMobile}
                 startIcon={<CloudDownloadIcon />}
                 variant={'contained'}
