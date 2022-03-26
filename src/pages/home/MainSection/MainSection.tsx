@@ -34,11 +34,11 @@ export const MainSection = () => {
               >
                 C
               </Typography>
-              оздание сайтов и приложений
+              reating websites and applications
             </Typography>
             <Typography mb={'32px'} color={'grey.400'} variant={'body1'}>
-              Максик - лучший веб-разработчик и по жизни красавчик) Становитесь
-              настоящим мастерами программирования!
+              This is website has been created for provide additional
+              information about me
             </Typography>
             <ButtonsWrapper>
               <Box
@@ -58,7 +58,7 @@ export const MainSection = () => {
                     variant={'contained'}
                     startIcon={<WorkIcon />}
                   >
-                    Портфолио
+                    Portfolio
                   </Button>
                 </Link>
               </Box>
@@ -75,7 +75,7 @@ export const MainSection = () => {
                     fullWidth
                     startIcon={<AccessibilityIcon />}
                   >
-                    Больше обо мне
+                    More about me
                   </Button>
                 </Link>
               </Box>

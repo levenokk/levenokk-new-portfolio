@@ -118,7 +118,7 @@ export const AboutSection = ({ resumeData }: Props) => {
                       fontSize={'inherit'}
                       component={'strong'}
                     >
-                      Моя почта:
+                      Email:
                     </Typography>{' '}
                     <Link
                       href={`mailto:${
@@ -139,17 +139,27 @@ export const AboutSection = ({ resumeData }: Props) => {
                         fontSize={'inherit'}
                         component={'strong'}
                       >
-                        Я в соц сетях:
+                        i in social networks:
                       </Typography>
                     </Typography>
                     <SocialsWrapper>
-                      <a href='#' target={'_blank'}>
+                      <a
+                        href='https://www.instagram.com/mstroilo/'
+                        target={'_blank'}
+                        rel='noreferrer'
+                      >
                         <InstagramIcon />
                       </a>
-                      <SocialLink href='#' target={'_blank'}>
+                      <SocialLink
+                        href='https://www.facebook.com/profile.php?id=100021807906705'
+                        target={'_blank'}
+                      >
                         <FacebookIcon />
                       </SocialLink>
-                      <SocialLink href='#' target={'_blank'}>
+                      <SocialLink
+                        href='https://github.com/levenokk'
+                        target={'_blank'}
+                      >
                         <GitHubIcon />
                       </SocialLink>
                     </SocialsWrapper>
@@ -162,7 +172,7 @@ export const AboutSection = ({ resumeData }: Props) => {
                       fontSize={'inherit'}
                       component={'strong'}
                     >
-                      Мой телефон:
+                      Phone number:
                     </Typography>{' '}
                     <Link
                       href={`tel:${
@@ -187,7 +197,7 @@ export const AboutSection = ({ resumeData }: Props) => {
                 startIcon={<CloudDownloadIcon />}
                 variant={'contained'}
               >
-                Загрузить моё резюме
+                Download my resume
               </Button>
             </Content>
           </ContentWrapper>

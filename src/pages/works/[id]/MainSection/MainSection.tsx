@@ -62,7 +62,7 @@ export const MainSection = ({ work }: Props) => {
                     fontSize={'inherit'}
                     component={'strong'}
                   >
-                    Заказчик:{' '}
+                    Client:{' '}
                   </Typography>
                   {work?.attributes?.client_name}
                 </Typography>
@@ -76,7 +76,7 @@ export const MainSection = ({ work }: Props) => {
                     fontSize={'inherit'}
                     component={'strong'}
                   >
-                    Срок выполнения:{' '}
+                    Term accomplishing:{' '}
                   </Typography>
                   {work?.attributes?.date_end}
                 </Typography>
@@ -99,7 +99,7 @@ export const MainSection = ({ work }: Props) => {
               component={'h3'}
               variant={'h5'}
             >
-              Цель проекта
+              Project targets
             </Typography>
             <List>
               {work?.attributes?.targets?.map((target) => (
@@ -117,7 +117,7 @@ export const MainSection = ({ work }: Props) => {
               component={'h3'}
               variant={'h5'}
             >
-              Выполненные задачи
+              Accomplished tasks
             </Typography>
             <List>
               {work?.attributes?.executed_tasks?.map((executed_task) => (

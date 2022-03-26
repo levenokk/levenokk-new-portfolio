@@ -2,7 +2,7 @@ import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const LeftWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  maxWidth: 580,
+  maxWidth: 600,
   [theme.breakpoints.down('desktop')]: {
     maxWidth: 420,
   },

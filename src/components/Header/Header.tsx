@@ -76,7 +76,7 @@ export const Header = () => {
                   duration={500}
                   to={'about'}
                 >
-                  Обо мне
+                  About me
                 </Link>
               </ListItem>
               <ListItem>
@@ -87,7 +87,7 @@ export const Header = () => {
                   duration={500}
                   to={'portfolio'}
                 >
-                  Портфолио
+                  Portfolio
                 </Link>
               </ListItem>
               <ListItem>
@@ -98,7 +98,7 @@ export const Header = () => {
                   duration={500}
                   to={'contacts'}
                 >
-                  Контакты
+                  Contacts
                 </Link>
               </ListItem>
             </List>
@@ -106,7 +106,7 @@ export const Header = () => {
 
           <Link spy={true} smooth={true} duration={500} to={'form'}>
             <Button variant={'outlined'} startIcon={<MarkEmailUnreadIcon />}>
-              Связаться со мной
+              Contact me
             </Button>
           </Link>
 

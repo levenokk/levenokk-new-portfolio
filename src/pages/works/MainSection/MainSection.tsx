@@ -52,17 +52,14 @@ export const MainSection = ({ works }: Props) => {
             component={'span'}
             color={'primary.main'}
           >
-            П
+            P
           </Typography>
-          ортфолио
+          ortfolio
         </Typography>
         <Box mb={'45px'} maxWidth={960} mx={'auto'}>
           <Typography variant={'body1'} textAlign={'center'}>
-            Разнообразный и богатый опыт постоянное информационно-
-            пропагандистское обеспечение нашей деятельности требуют от нас
-            анализа существенных финансовых и административных условий. Задача
-            организации, в особенности же консультация с широким активом
-            позволяет оценить значение систем массового участия.
+            There are collected my works all. Each project has interesting
+            solution and technologies.
           </Typography>
         </Box>
         <Projects>
@@ -78,7 +75,7 @@ export const MainSection = ({ works }: Props) => {
             fullWidth
             variant={'contained'}
           >
-            Показать больше
+            Show more
           </Button>
         </Box>
       </Wrapper>

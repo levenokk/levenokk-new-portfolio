@@ -33,12 +33,12 @@ export const SimilarWorksSection = ({ works }: Props) => {
               component={'span'}
               color={'primary.main'}
             >
-              П
+              L
             </Typography>
-            осмотрите другие работы
+            ook other works
           </Typography>
           <Typography mb={'45px'} variant={'body1'} textAlign={'center'}>
-            Тут собраны все мои работы за последнее время
+            There are one of my works
           </Typography>
           <Projects>
             {works?.map((work) => (
@@ -56,7 +56,7 @@ export const SimilarWorksSection = ({ works }: Props) => {
               startIcon={<Icon />}
               variant={'contained'}
             >
-              Показать больше
+              Show more
             </Button>
           </Box>
         </Layout>

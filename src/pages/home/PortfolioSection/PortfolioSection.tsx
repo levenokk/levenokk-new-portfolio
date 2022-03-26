@@ -33,9 +33,9 @@ export const PortfolioSection = ({ works }: Props) => {
               component={'span'}
               color={'primary.main'}
             >
-              П
+              P
             </Typography>
-            ортфолио
+            ortfolio
           </Typography>
           <Typography
             mb={'45px'}
@@ -43,7 +43,7 @@ export const PortfolioSection = ({ works }: Props) => {
             textAlign={'center'}
             variant={'body1'}
           >
-            Тут собраны все мои работы за последнее время
+            there are collected my latest works
           </Typography>
           <Projects>
             {works?.map((work) => (
@@ -57,7 +57,7 @@ export const PortfolioSection = ({ works }: Props) => {
               startIcon={<Icon />}
               variant={'contained'}
             >
-              Показать больше
+              Show more
             </Button>
           </Box>
         </Layout>

@@ -82,14 +82,11 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
                   component={'span'}
                   color={'primary.main'}
                 >
-                  Н
+                  W
                 </Typography>
-                апишите мне
+                rite me
               </Typography>
-              <Typography mb={'32px'} color={'grey.400'} variant={'body1'}>
-                Оставь свое сообщение и я обязательно отвечу Вам в ближайшее
-                время
-              </Typography>
+              Leave your message and i will respond you how can faster
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={{
@@ -101,13 +98,13 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
               >
                 {({ handleSubmit, dirty, isValid }) => (
                   <FormWrapper>
-                    <TextField name={'name'} label={'Ваше имя'} />
-                    <TextField name={'email'} label={'Ваш email'} />
+                    <TextField name={'name'} label={'Firstname'} />
+                    <TextField name={'email'} label={'Email'} />
                     <TextField
                       multiline
                       rows={4}
                       name={'message'}
-                      label={'Ваше сообщение'}
+                      label={'Your message'}
                     />
                     <Box maxWidth={isMobile ? '100%' : '240px'} mt={'34px'}>
                       <Button
@@ -118,7 +115,7 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
                         variant={'contained'}
                         onClick={() => handleSubmit()}
                       >
-                        Отправить
+                        Send
                       </Button>
                     </Box>
                   </FormWrapper>
@@ -138,9 +135,9 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
         <Alert
           onClose={handleClose}
           severity={error ? 'error' : 'success'}
-          sx={{ width: '400px' }}
+          sx={{ width: '500px' }}
         >
-          {error ? 'something went wrong' : 'This is a success message!'}
+          {error ? 'Something went wrong' : 'The message has been sent! Thanks you'}
         </Alert>
       </Snackbar>
     </Element>

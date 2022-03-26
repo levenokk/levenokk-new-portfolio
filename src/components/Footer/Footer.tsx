@@ -53,13 +53,20 @@ export const Footer = ({ works, resumeData }: Props) => {
               </Link>
             </Box>
             <SocialsWrapper>
-              <a href='#' target={'_blank'}>
+              <a
+                href='https://www.instagram.com/mstroilo/'
+                target={'_blank'}
+                rel='noreferrer'
+              >
                 <InstagramIcon />
               </a>
-              <SocialLink href='#' target={'_blank'}>
+              <SocialLink
+                href='https://www.facebook.com/profile.php?id=100021807906705'
+                target={'_blank'}
+              >
                 <FacebookIcon />
               </SocialLink>
-              <SocialLink href='#' target={'_blank'}>
+              <SocialLink href='https://github.com/levenokk' target={'_blank'}>
                 <GitHubIcon />
               </SocialLink>
             </SocialsWrapper>
@@ -76,11 +83,13 @@ export const Footer = ({ works, resumeData }: Props) => {
                 fontSize={20}
                 variant={'h5'}
               >
-                Мотивация
+                Motivation
               </Typography>
               <Typography color={'grey.400'} variant={'body1'}>
-                Разрабатываю сайты и мобильные приложения. А так же делаю
-                анимацию React Native
+                I like do something interesting and i decided make this web
+                site.I have been learning IT more than 4 years and it`s my
+                hobby. I like learning and complexity projects that help me
+                become better in the future
               </Typography>
             </Box>
 
@@ -91,7 +100,7 @@ export const Footer = ({ works, resumeData }: Props) => {
                 fontSize={20}
                 variant={'h5'}
               >
-                Обо мне
+                My skills
               </Typography>
               <Typography color={'grey.400'} variant={'body1'}>
                 {resumeData?.data?.attributes?.skils}
@@ -105,7 +114,7 @@ export const Footer = ({ works, resumeData }: Props) => {
                 fontSize={20}
                 variant={'h5'}
               >
-                Портфолио
+                Portfolio
               </Typography>
               <FooterList>
                 {works?.map((work) => (
@@ -125,7 +134,7 @@ export const Footer = ({ works, resumeData }: Props) => {
                   fontSize={20}
                   variant={'h5'}
                 >
-                  Контакты
+                  My contacts
                 </Typography>
                 <Box mb={'10px'} display={'flex'} alignItems={'center'}>
                   <Box mr={'9px'}>
@@ -157,7 +166,7 @@ export const Footer = ({ works, resumeData }: Props) => {
                   <Box mr={'9px'}>
                     <RoomIcon color={'primary'} />
                   </Box>
-                  <LinkStyled href={'#'}>Украина, Киев</LinkStyled>
+                  <LinkStyled href={'#'}>Ukraine, Kyiv</LinkStyled>
                 </Box>
               </Element>
             </Box>
@@ -170,7 +179,7 @@ export const Footer = ({ works, resumeData }: Props) => {
           variant={'body2'}
           textAlign={'center'}
         >
-          Levenokk 2021-{new Date().getFullYear()} © Все права защищены
+          Levenokk 2021-{new Date().getFullYear()} © All right protected
         </Typography>
       </FooterBottom>
     </footer>
