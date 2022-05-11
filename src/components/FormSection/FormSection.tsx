@@ -137,7 +137,9 @@ export const FormSection: React.FC<Props> = ({ isBackground = false }) => {
           severity={error ? 'error' : 'success'}
           sx={{ width: '500px' }}
         >
-          {error ? 'Something went wrong' : 'The message has been sent! Thanks you'}
+          {error
+            ? 'Something went wrong'
+            : 'The message has been sent! Thanks you'}
         </Alert>
       </Snackbar>
     </Element>

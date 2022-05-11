@@ -22,7 +22,7 @@ export default function Index({ pageData, resumeData }: Props) {
   return <Home resumeData={resumeData} pageData={pageData} />;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const pageData = await client.query<GetWorksQuery, GetWorksQueryVariables>({
     query: GET_WORKS,
     fetchPolicy: 'network-only',
